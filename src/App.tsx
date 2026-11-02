@@ -12,7 +12,7 @@ function ScrollToTop() {
   useEffect(() => {
     if (hash) {
       const el = document.getElementById(hash.slice(1));
-      if (el) { setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 60); return; }
+      if (el) { setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 120); return; }
     }
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
   }, [pathname, hash]);

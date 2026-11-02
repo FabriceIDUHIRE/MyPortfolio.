@@ -171,3 +171,5 @@
 .snap-desc { margin: 18px 0 0; font-size: 19px; color: var(--muted); max-width: 384px; line-height: 1.5; }
 .snap-note { margin: 18px 0 0; font-size: 28px; color: var(--orange-deep); transform: rotate(-2deg); display: inline-block; }
 @media (max-width: 900px) { .snap-title { font-size: 40px; } .snap-desc { font-size: 17px; } .snap-chip { font-size: 10px; } }
+
+#ask { scroll-margin-top: 96px; }

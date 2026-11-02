@@ -17,10 +17,16 @@ export default function Nav() {
   const [copied, setCopied] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
+  const goAsk = () => {
+    const el = document.getElementById('ask');
+    if (el && window.location.pathname === '/about') el.scrollIntoView({ behavior: 'smooth' });
+    else navigate('/about#ask');
+  };
   useEffect(() => {
-    const on = (e: KeyboardEvent) => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); navigate('/about#ask'); } };
+    const on = (e: KeyboardEvent) => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); goAsk(); } };
     window.addEventListener('keydown', on);
     return () => window.removeEventListener('keydown', on);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate]);
 
   useEffect(() => setOpen(false), [pathname]);
@@ -66,7 +72,7 @@ export default function Nav() {
           </nav>
 
           <div className="nav-actions">
-          <Link to="/about#ask" className="nav-k mono" title="Ask me anything">⌘K</Link>
+          <button className="nav-k mono" title="Ask me anything (⌘K)" onClick={goAsk}>⌘K</button>
           <button className="nav-email" onClick={copy} aria-live="polite">
             <span>{copied ? 'copied to clipboard!' : site.email}</span>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
