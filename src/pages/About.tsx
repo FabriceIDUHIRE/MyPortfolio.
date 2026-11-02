@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import { links, isExternal } from '../content/site';
 import { Bricks } from './Home';
-import { Cursor, Photo, Reveal, SectionHead } from '../components/bits';
+import { Cursor, Photo, Reveal, SectionHead, Stage } from '../components/bits';
 import WhereToNext from '../components/WhereToNext';
 import { useIsMobile } from '../useIsMobile';
 import './about.css';
@@ -166,56 +166,85 @@ function AskMe() {
 
 /* ───────── snapshots ───────── */
 const stories = [
-  { tag: 'WHERE IT HAPPENS', t: 'Where it happens', d: 'My desk, a second monitor, and far too many open tabs.', note: 'the plant is fake.', bg: '#e7dfd1' },
-  { tag: 'HOW MIGHT WE…', t: 'How might we…', d: 'A workshop wall after two hours of sticky notes and strong coffee.', note: 'we did find the answer', bg: '#c9b8ff' },
-  { tag: 'HI AGAIN', t: 'Hi again', d: 'That’s me. Usually a lot less serious than this photo.', note: 'promise.', bg: '#f3eee4' },
-  { tag: 'SUNDAY WALK', t: 'Sunday walk', d: 'Where most of my “aha” moments quietly show up.', note: 'steps > screens', bg: '#b9d9c3' },
-  { tag: 'NOW PLAYING', t: 'Now playing', d: 'Unwinding with a controller after a long week of pixels.', note: 'ask me about my FC squad', bg: '#16130f' },
+  { tag: 'WHERE IT HAPPENS', t: 'Where it happens', d: 'My desk, a second monitor, and far too many open tabs.', note: 'the plant is fake.' },
+  { tag: 'HOW MIGHT WE…', t: 'How might we…', d: 'A workshop wall after two hours of sticky notes and strong coffee.', note: 'we did find the answer' },
+  { tag: 'HI AGAIN', t: 'Hi again', d: 'That’s me. Usually a lot less serious than this photo.', note: 'promise.' },
+  { tag: 'SUNDAY WALK', t: 'Sunday walk', d: 'Where most of my “aha” moments quietly show up.', note: 'steps > screens' },
+  { tag: 'NOW PLAYING', t: 'Now playing', d: 'Unwinding with a controller after a long week of pixels.', note: 'ask me about my FC squad' },
 ];
-const DUR = 2650;
+const FILL = 2600;
+const depthRot = [0, 4, -3, 4, -3];
 function Snapshots() {
-  const [i, setI] = useState(0);
-  const [k, setK] = useState(0); // restarts the progress animation
-  const timer = useRef<number>();
+  const mobile = useIsMobile();
+  const [i, setI] = useState(0);          // current story (5 = all seen, about to reset)
+  const [run, setRun] = useState(0);      // restarts the progress bar
   useEffect(() => {
-    timer.current = window.setTimeout(() => { setI((x) => (x + 1) % stories.length); setK((x) => x + 1); }, DUR);
-    return () => clearTimeout(timer.current);
-  }, [i, k]);
-  const next = () => { setI((x) => (x + 1) % stories.length); setK((x) => x + 1); };
-  const s = stories[i];
+    const t = window.setTimeout(() => {
+      setI((x) => (x >= stories.length ? 0 : x + 1));
+      setRun((r) => r + 1);
+    }, i === stories.length ? 1000 : FILL + 50);
+    return () => clearTimeout(t);
+  }, [i, run]);
+  const skip = () => {
+    if (i >= stories.length - 1) { setI(0); } else { setI(i + 1); }
+    setRun((r) => r + 1);
+  };
+  const cur = Math.min(i, stories.length - 1);
+  const s = stories[cur];
+  // geometry (desktop stage 1384×660, mobile stage 440×760)
+  const G = mobile
+    ? { card: [300, 390], top: [70, 40], step: [12, 9], pile: [8, 470], seg: [86, 20, 300] }
+    : { card: [400, 520], top: [440, 70], step: [20, 12], pile: [50, 300], seg: [456, 40, 368] };
+  const segW = (G.seg[2] - 4 * 6) / 5;
   return (
     <section className="section">
       <div className="wrap">
-        <SectionHead kicker="SNAPSHOTS" title="Life outside the artboard" word="artboard" sub="A few moments from my camera roll. They play like stories. Tap a photo to skip ahead." />
-        <div className="stories">
-          <div className="story-stack">
-            <span className="story-ghost g2" /><span className="story-ghost g1" />
-            <button className="story-card" onClick={next} aria-label="Next story">
-              <div className="story-bars">
-                {stories.map((_, n) => (
-                  <span key={n}>{n < i ? <i style={{ width: '100%' }} /> : n === i ? <i key={k} className="run" style={{ animationDuration: `${DUR}ms` }} /> : null}</span>
-                ))}
-              </div>
-              <AnimatePresence mode="popLayout">
-                <motion.div key={i} className="story-photo" initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.45 }}>
-                  <Photo src={`/images/snap-${i + 1}.jpg`} alt={s.d} className="story-img" fallback={<span className="story-fallback hand" style={{ color: s.bg === '#16130f' ? '#f3eee4' : '#16130f' }}>{s.t}</span>} style={{ background: s.bg }} />
+        <SectionHead kicker="SNAPSHOTS" title="Life outside the artboard" word="artboard" sub={mobile ? 'A few moments from my camera roll. They play like stories. Tap a photo to skip ahead.' : 'A few moments from my camera roll. They play like stories. Click a photo to skip ahead.'} />
+        <Stage w={mobile ? 440 : 1384} h={mobile ? 700 : 660} max={mobile ? 1.3 : 1}>
+          <div className="snap">
+            {!mobile && <motion.span className="hand snap-seen" style={{ left: G.pile[0] + 40, top: G.pile[1] + (mobile ? 170 : 300) }} animate={{ opacity: i > 0 ? 1 : 0.3, rotate: 4 }}>seen it</motion.span>}
+            {stories.map((st, k) => {
+              const seen = k < i;
+              const d = k - i;
+              const order = seen ? k : 0;
+              const pos = seen
+                ? (mobile ? { x: -360, y: 120, rotate: -16, scale: 0.6, opacity: 0 } : { x: G.pile[0] + order * 8, y: G.pile[1] - order * 6, rotate: -10 + order * 4, scale: 0.5, opacity: 1 })
+                : { x: G.top[0] + d * G.step[0], y: G.top[1] + d * G.step[1], rotate: depthRot[d] ?? 0, scale: 1, opacity: 1 };
+              return (
+                <motion.button
+                  key={k}
+                  className="snap-card"
+                  style={{ width: G.card[0], height: G.card[1], zIndex: seen ? 20 + k : 10 - d, originX: 0, originY: 0 }}
+                  initial={false}
+                  animate={pos}
+                  transition={i === 0 && run > 0 ? { type: 'spring', stiffness: 220, damping: 14 } : { duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  onClick={skip}
+                  aria-label={`Story ${k + 1}: ${st.t}. Next story`}
+                  tabIndex={k === cur ? 0 : -1}
+                >
+                  <Photo src={`/images/snap-${k + 1}.jpg`} alt={st.d} className="snap-img" fallback={<span className="hand snap-fb">{st.t}</span>} />
+                  <span className="mono snap-chip">0{k + 1} · {st.tag}</span>
+                </motion.button>
+              );
+            })}
+            {stories.map((_, k) => (
+              <span key={k} className="snap-seg" style={{ left: G.seg[0] + k * (segW + 6), top: G.seg[1], width: segW }}>
+                {k < i || i === stories.length ? <i style={{ width: '100%' }} /> : k === i ? <i key={run} className="run" style={{ animationDuration: `${FILL}ms` }} /> : null}
+              </span>
+            ))}
+            <span className="hand snap-skip" style={mobile ? { left: 250, top: 452 } : { left: 690, top: 620 }}>{mobile ? 'tap to skip →' : 'click to skip →'}</span>
+            <div className="snap-text" style={mobile ? { left: 20, top: 500, width: 400 } : { left: 960, top: 170, width: 424 }}>
+              <p className="mono kicker">STORY 0{cur + 1} / 0{stories.length}</p>
+              <AnimatePresence mode="wait">
+                <motion.div key={cur} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.35 }}>
+                  <h3 className="snap-title">{s.t}</h3>
+                  <p className="snap-desc">{s.d}</p>
+                  <p className="hand snap-note">{s.note}</p>
                 </motion.div>
               </AnimatePresence>
-              <span className="story-chip mono">0{i + 1} · {s.tag}</span>
-            </button>
-            <span className="hand story-skip">tap to skip →</span>
+            </div>
           </div>
-          <div className="story-text">
-            <p className="mono kicker">STORY 0{i + 1} / 0{stories.length}</p>
-            <AnimatePresence mode="wait">
-              <motion.div key={i} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.35 }}>
-                <h3 className="h-md">{s.t}</h3>
-                <p className="lead">{s.d}</p>
-                <p className="hand story-note">{s.note}</p>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
+        </Stage>
       </div>
     </section>
   );

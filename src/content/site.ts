@@ -6,7 +6,7 @@ export const site = {
   name: 'Fabrice Iduhire',
   role: 'Product designer',
   email: 'fabriceatwork@gmail.com',
-  bookCall: '', // e.g. 'https://cal.com/your-name/30min'
+  bookCall: 'https://cal.com/fabrice-iduhire',
   resume: '', // e.g. '/resume.pdf' (put the file in the /public folder)
   linkedin: '', // e.g. 'https://www.linkedin.com/in/your-name'
 };
