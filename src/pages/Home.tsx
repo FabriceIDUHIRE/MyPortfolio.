@@ -227,18 +227,18 @@ function SelectedWork() {
           </>
         ) : (
           <Stage w={1384} h={1310}>
-            <div className="pile" onMouseEnter={() => setSpread(true)}>
+            <div className="pile" onMouseEnter={() => setSpread(true)} onMouseLeave={() => setSpread(false)}>
               <motion.p className="mono pile-label" animate={{ opacity: spread ? 0 : 1 }}>04 FILES  ·  NEATLY PILED</motion.p>
               {[...cases].reverse().map((c) => {
                 const i = c.index - 1;
                 const p = spread ? spreadAt[i] : pileAt[i];
                 return (
-                  <motion.div key={c.slug} className="pile-item" style={{ zIndex: 10 - i }} initial={false} animate={{ x: p[0], y: p[1], rotate: p[2] }} transition={{ type: 'spring', stiffness: 210, damping: 24, delay: spread ? i * 0.03 : 0 }}>
+                  <motion.div key={c.slug} className="pile-item" style={{ zIndex: 10 - i }} initial={false} animate={{ x: p[0], y: p[1], rotate: p[2] }} transition={{ type: 'spring', stiffness: 210, damping: 24, delay: spread ? i * 0.03 : (3 - i) * 0.03 }}>
                     <Folder c={c} />
                   </motion.div>
                 );
               })}
-              <motion.div className="pile-hint" animate={{ opacity: spread ? 0 : 1 }} transition={{ duration: 0.3 }}>
+              <motion.div className="pile-hint" animate={{ opacity: spread ? 0 : 1 }} transition={{ duration: 0.3, delay: spread ? 0 : 0.35 }}>
                 <p className="hand">four files, one messy pile.<br />hover to spread them out!</p>
                 <svg width="80" height="40" viewBox="0 0 80 40" fill="none"><path d="M76 6C56 2 30 10 8 30" stroke="#16130f" strokeWidth="2" strokeLinecap="round" /><path d="M6 18l2 13 13-3" stroke="#16130f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 <motion.div animate={{ x: [0, 8, 0], y: [0, -6, 0] }} transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }} className="pile-cursor"><Cursor label="you, curious" color="lilac" /></motion.div>
