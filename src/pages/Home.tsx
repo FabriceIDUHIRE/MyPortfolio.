@@ -81,9 +81,9 @@ function Comment() {
   const [open, setOpen] = useState(false);
   return (
     <motion.div className="cmt" initial={{ opacity: 0, scale: 0.92, y: 8 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.45 }}>
-      <span className="cmt-pin">YN</span>
+      <span className="cmt-pin">FI</span>
       <motion.div layout className="cmt-bubble" onHoverStart={() => setHover(true)} onHoverEnd={() => setHover(false)} onClick={() => setOpen((o) => !o)} animate={{ y: hover && !open ? -3 : 0 }} transition={{ layout: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } }}>
-        <motion.p layout="position" className="cmt-top"><b>Your Name</b> <span>just now</span></motion.p>
+        <motion.p layout="position" className="cmt-top"><b>Fabrice Iduhire</b> <span>just now</span></motion.p>
         <motion.p layout="position" className="cmt-msg">Things I get pulled into: product design, design systems, research &amp; prototyping. Ask me about any of them!</motion.p>
         <AnimatePresence>
           {open && (

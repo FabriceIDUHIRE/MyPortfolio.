@@ -95,7 +95,7 @@ function SleepyCursor({ small = false }: { small?: boolean }) {
       <AnimatePresence>{awake && <motion.span className="hand yawn" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>*yawn*</motion.span>}</AnimatePresence>
       <motion.div className="sleepy-cur" animate={awake ? { y: -10, rotate: 0 } : { y: 0, rotate: 0 }} transition={{ type: 'spring', stiffness: 320, damping: 10 }}>
         <svg width="22" height="24" viewBox="0 0 20 22"><path d="M2 2l15 8.5-6.6 1.6L7.2 19 2 2z" fill={awake ? '#ff5b2e' : '#c9b8ff'} stroke="#16130f" strokeWidth="1.6" strokeLinejoin="round" /></svg>
-        <span className={`sleepy-tag ${awake ? 'awake' : ''}`}>{awake ? 'oh hi! I’m back' : 'Your Name · away'}</span>
+        <span className={`sleepy-tag ${awake ? 'awake' : ''}`}>{awake ? 'oh hi! I’m back' : 'Fabrice Iduhire · away'}</span>
       </motion.div>
     </div>
   );

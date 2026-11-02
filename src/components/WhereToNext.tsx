@@ -73,7 +73,7 @@ export default function WhereToNext() {
         <div className="chat">
           <p className="chat-time mono">TODAY · {time}</p>
           <motion.div className="chat-row" initial={{ opacity: 0, y: 20, scale: 0.96 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}>
-            <span className="chat-av">YN</span>
+            <span className="chat-av">FI</span>
             <div className="bubble bubble-orange">So… you scrolled all the way down.</div>
           </motion.div>
           <motion.div className="chat-row chat-row-2" initial={{ opacity: 0, y: 20, scale: 0.96 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}>
