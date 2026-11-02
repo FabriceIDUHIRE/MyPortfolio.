@@ -1,0 +1,54 @@
+.pg-hero { margin-top: -84px; padding-top: 84px; overflow: hidden; }
+.pg-hero-inner { display: grid; grid-template-columns: 1.4fr 1fr; align-items: center; gap: 40px; min-height: 640px; padding-top: 56px; padding-bottom: 64px; }
+.pg-kicker { font-size: 13px; letter-spacing: .08em; color: var(--muted); margin: 0 0 32px; }
+.pg-lead { margin-top: 30px; max-width: 520px; }
+.pg-pill { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; padding: 6px 14px 6px 6px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); font-size: 14px; }
+.pg-pill .mono { font-size: 11px; background: var(--cream); padding: 4px 7px; border-radius: 6px; }
+.stickers { position: relative; height: 360px; }
+.stk { position: absolute; display: grid; place-items: center; text-align: center; font-family: var(--f-display); font-weight: 800; line-height: 1.05; cursor: grab; touch-action: none; }
+.stk:active { cursor: grabbing; }
+.stk span { position: relative; }
+.stk-burst { left: 8%; top: 2%; width: 150px; height: 150px; font-size: 18px; }
+.stk-burst::before { content: ''; position: absolute; inset: 0; background: var(--orange); clip-path: polygon(50% 0%, 59% 15%, 75% 7%, 77% 25%, 93% 25%, 87% 41%, 100% 50%, 87% 59%, 93% 75%, 77% 75%, 75% 93%, 59% 85%, 50% 100%, 41% 85%, 25% 93%, 23% 75%, 7% 75%, 13% 59%, 0% 50%, 13% 41%, 7% 25%, 23% 25%, 25% 7%, 41% 15%); }
+.stk-lilac { right: 6%; top: 26%; width: 136px; height: 136px; border-radius: 50%; background: var(--lilac); font-size: 21px; }
+.stk-ink { left: 20%; top: 52%; width: 150px; height: 150px; border-radius: 50%; background: var(--ink); color: var(--cream); font-size: 21px; }
+.stk-ink span { font-size: 1em; }
+.stk-note { position: absolute; right: 14%; bottom: 4%; font-size: 24px; }
+
+.ws { display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: start; }
+.ws > * { min-width: 0; }
+.ws-side { position: sticky; top: 104px; }
+.ws-pages { background: var(--white); border-radius: 18px; padding: 14px 10px; box-shadow: 0 12px 30px rgba(22,19,15,.08); }
+.ws-pages-head { display: flex; justify-content: space-between; padding: 0 8px 10px; font-size: 14px; }
+.ws-pages-head span { font-size: 10px; color: var(--muted); }
+.ws-page { position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 10px; min-height: 44px; border-radius: 10px; font-size: 15px; text-align: left; }
+.ws-hi { position: absolute; inset: 0; background: #ece6ff; border-radius: 10px; }
+.ws-page-t, .ws-page-n { position: relative; }
+.ws-page.on .ws-page-t { font-weight: 600; }
+.ws-page-n { font-size: 11px; color: var(--muted); }
+.ws-hint { margin: 12px 8px 4px; font-size: 19px; line-height: 1.05; color: var(--orange-deep); border-top: 1px solid var(--line); padding-top: 12px; }
+.ws-sticky { margin: 30px 0 0 12px; width: 150px; padding: 18px 16px; background: var(--lilac); font-size: 21px; line-height: 1.05; transform: rotate(-5deg); box-shadow: 0 10px 20px rgba(22,19,15,.12); }
+.ws-bar { display: flex; justify-content: space-between; font-size: 11px; letter-spacing: .08em; color: var(--muted); padding: 6px 2px 18px; }
+.ws-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px 18px; }
+
+@media (max-width: 1200px) { .ws-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px) {
+  .pg-hero { margin-top: -68px; padding-top: 68px; }
+  .pg-hero-inner { grid-template-columns: 1fr; min-height: 0; padding-top: 32px; }
+  .stickers { height: 280px; }
+  .stk-burst { width: 120px; height: 120px; font-size: 15px; left: 4%; }
+  .stk-lilac { width: 110px; height: 110px; font-size: 17px; right: 4%; top: 18%; }
+  .stk-ink { width: 120px; height: 120px; font-size: 17px; left: 26%; top: 50%; }
+  .stk-note { right: 2%; font-size: 20px; }
+  .ws { grid-template-columns: 1fr; gap: 16px; }
+  .ws-side { position: static; }
+  .ws-pages { display: flex; gap: 6px; overflow-x: auto; padding: 0; background: none; box-shadow: none; scrollbar-width: none; }
+  .ws-pages-head, .ws-hint, .ws-sticky { display: none; }
+  .ws-page { width: auto; flex: none; gap: 8px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); }
+  .ws-hi { border-radius: 999px; background: var(--ink); }
+  .ws-page.on .ws-page-t { color: var(--cream); }
+  .ws-page.on .ws-page-n { color: var(--orange); }
+  .ws-bar-r { display: none; }
+  .ws-grid { grid-template-columns: repeat(2, 1fr); gap: 18px 12px; }
+  .ws-grid .xp-meta b { font-size: 15px; }
+}
