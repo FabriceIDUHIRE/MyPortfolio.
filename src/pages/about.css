@@ -150,3 +150,6 @@
   .tb-chips { gap: 10px; }
   .tb-note { font-size: 21px; left: 18px; right: auto; }
 }
+.ab-btns { position: relative; display: flex; flex-wrap: wrap; gap: 12px; }
+.ab-btns .btn { min-height: 56px; padding: 0 28px; font-size: 17px; transition: background .3s, color .3s, transform .35s var(--ease-bounce); }
+@media (max-width: 900px) { .ab-btns { flex-direction: column; } .ab-btns .btn { width: 100%; } .ab-btns .cta-you { display: none; } }

@@ -9,18 +9,29 @@ const filters: ('All' | Category)[] = ['All', 'Apps', 'Motion', 'Tools', 'Fun'];
 
 function Stickers() {
   const s = [
-    { cls: 'stk-burst', txt: <>12<br />experiments</>, x: 0, r: -12, d: 0.3 },
-    { cls: 'stk-lilac', txt: <>made<br />for fun</>, x: 1, r: 8, d: 0.45 },
-    { cls: 'stk-ink', txt: <>0<br />regrets</>, x: 2, r: -6, d: 0.6 },
+    { cls: 'stk-burst', txt: <>12<br />experiments</>, hover: <>and<br />counting!</>, r: -12, d: 0.3 },
+    { cls: 'stk-lilac', txt: <>6<br />shipped</>, hover: <>to real<br />humans</>, r: 8, d: 0.45 },
+    { cls: 'stk-ink', txt: <>0<br />regrets</>, hover: <>ok,<br />maybe 1</>, r: -6, d: 0.6 },
   ];
+  const [h, setH] = useState<number | null>(null);
+  const [drop, setDrop] = useState(0);
   return (
     <div className="stickers" aria-hidden>
-      {s.map((k) => (
-        <motion.div key={k.cls} className={`stk ${k.cls}`} initial={{ y: -260, opacity: 0, rotate: 0 }} animate={{ y: 0, opacity: 1, rotate: k.r }} transition={{ type: 'spring', stiffness: 180, damping: 11, delay: k.d }} whileHover={{ scale: 1.1, rotate: k.r + 14 }} drag dragSnapToOrigin dragElastic={0.6}>
-          <span>{k.txt}</span>
+      {s.map((k, i) => (
+        <motion.div key={`${k.cls}-${drop}`} className={`stk-drop ${k.cls}`} initial={{ y: -340, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ type: 'spring', stiffness: 190, damping: 11, delay: drop ? i * 0.12 : k.d }}>
+          <motion.div
+            className={`stk ${k.cls}-in`}
+            animate={h === i ? { y: -6, rotate: k.r + 10, scale: 1.18 } : { y: [0, 8, 0], rotate: [k.r, k.r + 4, k.r], scale: 1 }}
+            transition={h === i ? { type: 'spring', stiffness: 300, damping: 12 } : { duration: 4.4, repeat: Infinity, ease: 'easeInOut' }}
+            onMouseEnter={() => setH(i)}
+            onMouseLeave={() => setH(null)}
+            onClick={() => { setH(null); setDrop((d) => d + 1); }}
+          >
+            <span>{h === i ? k.hover : k.txt}</span>
+          </motion.div>
         </motion.div>
       ))}
-      <motion.p className="hand stk-note" initial={{ opacity: 0 }} animate={{ opacity: 1, rotate: -6 }} transition={{ delay: 1.1 }}>(ok, maybe one)</motion.p>
+      <motion.p className="hand stk-note" initial={{ opacity: 0 }} animate={{ opacity: 1, rotate: -6 }} transition={{ delay: 1.1 }}>{h === 2 ? '(the confetti one)' : '(ok, maybe one)'}</motion.p>
     </div>
   );
 }

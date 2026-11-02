@@ -5,13 +5,16 @@
 .pg-pill { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; padding: 6px 14px 6px 6px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); font-size: 14px; }
 .pg-pill .mono { font-size: 11px; background: var(--cream); padding: 4px 7px; border-radius: 6px; }
 .stickers { position: relative; height: 360px; }
-.stk { position: absolute; display: grid; place-items: center; text-align: center; font-family: var(--f-display); font-weight: 800; line-height: 1.05; cursor: grab; touch-action: none; }
+.stk-drop { position: absolute; }
+.stk { position: relative; width: 100%; height: 100%; display: grid; place-items: center; text-align: center; font-family: var(--f-display); font-weight: 800; line-height: 1.05; cursor: pointer; }
 .stk:active { cursor: grabbing; }
 .stk span { position: relative; }
 .stk-burst { left: 8%; top: 2%; width: 150px; height: 150px; font-size: 18px; }
-.stk-burst::before { content: ''; position: absolute; inset: 0; background: var(--orange); clip-path: polygon(50% 0%, 59% 15%, 75% 7%, 77% 25%, 93% 25%, 87% 41%, 100% 50%, 87% 59%, 93% 75%, 77% 75%, 75% 93%, 59% 85%, 50% 100%, 41% 85%, 25% 93%, 23% 75%, 7% 75%, 13% 59%, 0% 50%, 13% 41%, 7% 25%, 23% 25%, 25% 7%, 41% 15%); }
-.stk-lilac { right: 6%; top: 26%; width: 136px; height: 136px; border-radius: 50%; background: var(--lilac); font-size: 21px; }
-.stk-ink { left: 20%; top: 52%; width: 150px; height: 150px; border-radius: 50%; background: var(--ink); color: var(--cream); font-size: 21px; }
+.stk-burst-in::before { content: ''; position: absolute; inset: 0; background: var(--orange); clip-path: polygon(50% 0%, 59% 15%, 75% 7%, 77% 25%, 93% 25%, 87% 41%, 100% 50%, 87% 59%, 93% 75%, 77% 75%, 75% 93%, 59% 85%, 50% 100%, 41% 85%, 25% 93%, 23% 75%, 7% 75%, 13% 59%, 0% 50%, 13% 41%, 7% 25%, 23% 25%, 25% 7%, 41% 15%); }
+.stk-lilac { right: 6%; top: 26%; width: 136px; height: 136px; font-size: 21px; }
+.stk-lilac-in { border-radius: 50%; background: var(--lilac); }
+.stk-ink { left: 20%; top: 52%; width: 150px; height: 150px; font-size: 21px; }
+.stk-ink-in { border-radius: 50%; background: var(--ink); color: var(--cream); }
 .stk-ink span { font-size: 1em; }
 .stk-note { position: absolute; right: 14%; bottom: 4%; font-size: 24px; }
 

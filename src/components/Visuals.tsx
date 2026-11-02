@@ -162,3 +162,37 @@ export function BeforeAfter({ slug, after }: { slug: string; after: boolean }) {
     </div>
   );
 }
+
+/** Tiny static screenshots that sit on the folder papers. */
+function TinyPhone({ children }: { children: ReactNode }) {
+  return (
+    <div className="phone tiny">
+      <div className="phone-status"><span>9:41</span><i /></div>
+      <div className="phone-body">{children}</div>
+    </div>
+  );
+}
+export function MiniScreens({ slug }: { slug: string }) {
+  if (slug === 'design-system') {
+    return (
+      <div className="mini mini-ds">
+        <div className="mini-ds-side"><b>Component Library</b>{['Buttons', 'Inputs', 'Cards', 'Tokens', 'Icons'].map((x, i) => <span key={x} className={i === 0 ? 'on' : ''}>{x}</span>)}</div>
+        <div className="mini-ds-main">
+          <div className="mini-ds-row"><span className="ds-b p">Primary</span><span className="ds-b s">Secondary</span><span className="ds-b g">Ghost</span></div>
+          <div className="mini-ds-row"><span className="ds-in">Email address</span><span className="ds-tg"><i /></span></div>
+          <div className="mini-ds-sw">{['#ff5b2e', '#c9b8ff', '#f3eee4', '#12a150', '#3a332b'].map((c) => <i key={c} style={{ background: c }} />)}</div>
+        </div>
+      </div>
+    );
+  }
+  const sets: Record<string, ReactNode[]> = {
+    payments: [<PayPaste key="a" />, <PayFound key="b" />, <PaySent key="c" />],
+    'clinic-booking': [<ClinicAsk key="a" />, <ClinicSlots key="b" />, <ClinicDone key="c" />],
+    'shop-tools': [<ShopToday key="a" />, <ShopTap key="b" />, <ShopToday key="c" />],
+  };
+  return (
+    <div className={`mini mini-${slug}`}>
+      {(sets[slug] ?? []).map((s, i) => <TinyPhone key={i}>{s}</TinyPhone>)}
+    </div>
+  );
+}

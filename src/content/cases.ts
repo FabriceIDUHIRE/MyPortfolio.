@@ -1,22 +1,29 @@
+// All case study text lives here. Edit freely: the pages update automatically.
 export type CaseStudy = {
   slug: string;
   file: string;
   index: number;
-  label: string; // e.g. FINTECH · 2025
+  label: string;
   color: string;
   ink: string;
-  title: [string, string]; // [plain part, italic word]
+  title: [string, string, string]; // before, italic accent, after
   intro: string;
+  heroChips: string[];
+  folderChips: string[];
+  darkFirstChip: boolean;
+  client: string;
   role: string;
   year: string;
+  team: string;
+  timeline: string;
   platform: string;
   tags: string[];
-  status?: string;
   problem: { title: string; body: string; steps: string[]; aside: string };
   stakes: { title: string; body: string; items: { wrong: string; response: string }[] };
-  research: { title: string; body: string; insight: string };
+  research: { title: string; body: string; stats: [string, string][]; quote: string; quoteBy: string; insight: string };
   idea: { title: string; body: string; steps: { t: string; d: string }[]; aside: string };
   result: { title: string; body: string; before: string; after: string };
+  impact: { title: string; body: string; items: { value: number; prefix?: string; unit: string; label: string; decimals?: number }[]; source: string };
   takeaways: { items: string[]; quote: string };
 };
 
@@ -28,11 +35,17 @@ export const cases: CaseStudy[] = [
     label: 'FINTECH · 2025',
     color: '#ff5b2e',
     ink: '#16130f',
-    title: ['Making money transfers feel', 'effortless'],
+    title: ['Making money transfers feel', 'effortless', ''],
     intro:
       'Sending money abroad meant copying long bank details from one app into another, and one wrong digit could send money to the wrong place. I redesigned the flow so people paste once, check once, and send with confidence.',
+    heroChips: ['↓ 80% fewer recipient errors', '35% faster transfers'],
+    folderChips: ['↓ 80% fewer errors', '35% faster'],
+    darkFirstChip: true,
+    client: 'Company One',
     role: 'Lead product designer',
     year: '2025',
+    team: '1 PM · 3 engineers · 1 analyst',
+    timeline: '10 weeks, discovery to launch',
     platform: 'iOS & Android',
     tags: ['Payments', 'UX writing', 'Prototyping'],
     problem: {
@@ -52,7 +65,10 @@ export const cases: CaseStudy[] = [
     },
     research: {
       title: 'The details were already there. People just had to retype them.',
-      body: 'Looking at how people actually shared bank details, the pattern was hard to miss: recipients almost always send their details as one message.',
+      body: 'I combined three sources: support tickets, product analytics and interviews with people who send money every month. The pattern was hard to miss: recipients almost always send their details as one message.',
+      stats: [['1,200', 'SUPPORT TICKETS REVIEWED'], ['40k', 'TRANSFERS ANALYSED'], ['12', 'INTERVIEWS']],
+      quote: '“I copy each line one by one and pray I didn’t miss a number.”',
+      quoteBy: '— Interview participant, small business owner',
       insight: 'they already have the whole message. let them paste it all at once.',
     },
     idea: {
@@ -68,16 +84,22 @@ export const cases: CaseStudy[] = [
     },
     result: {
       title: 'From seven fields to one box.',
-      body: 'The new flow cuts the work down to a single paste and a quick review. Flip between the two to see the difference.',
+      body: 'The new flow cut the work down to a single paste and a quick review. Flip between the two to see the difference.',
       before: '7 fields · 2 apps · 1 typo away from the wrong account',
       after: '1 box · 1 check · sent',
     },
-    takeaways: {
+    impact: {
+      title: 'The numbers moved, and so did the support queue.',
+      body: 'Three months after launch, fewer transfers went to the wrong place and people finished faster. Hover the numbers.',
       items: [
-        'Remove the work. Don’t just tidy it up.',
-        'Errors are a design problem, not a user problem.',
-        'Small signals, like a sweep or a label change, build big trust.',
+        { value: 80, unit: '%', label: 'FEWER RECIPIENT ERRORS' },
+        { value: 35, unit: '%', label: 'FASTER TO SEND' },
+        { value: 2, unit: '×', label: 'MORE REPEAT TRANSFERS' },
       ],
+      source: 'Source: product analytics, 3 months after launch, compared with the 3 months before.',
+    },
+    takeaways: {
+      items: ['Remove the work. Don’t just tidy it up.', 'Errors are a design problem, not a user problem.', 'Small signals, like a sweep or a label change, build big trust.'],
       quote: 'The best form is the one people don’t have to fill in.',
     },
   },
@@ -88,11 +110,17 @@ export const cases: CaseStudy[] = [
     label: 'HEALTH · 2024',
     color: '#c9b8ff',
     ink: '#16130f',
-    title: ['A calmer way to book a', 'doctor'],
+    title: ['A', 'calmer', 'way to book a doctor'],
     intro:
       'Booking a doctor meant phone calls, hold music and guessing which slot was free. People were anxious before they even arrived. I designed a booking flow that feels calm, clear and quick, even on a bad day.',
+    heroChips: ['2× more online bookings', '4.8 / 5 app rating'],
+    folderChips: ['2× more bookings', '4.8/5 app rating'],
+    darkFirstChip: true,
+    client: 'Clinic network',
     role: 'Product designer',
     year: '2024',
+    team: '1 PM · 2 engineers · 1 researcher',
+    timeline: '8 weeks, research to launch',
     platform: 'iOS, Android & web',
     tags: ['Health', 'Booking', 'Accessibility'],
     problem: {
@@ -112,7 +140,10 @@ export const cases: CaseStudy[] = [
     },
     research: {
       title: 'Anxiety, not the interface, was the real problem.',
-      body: 'The calmer the experience felt, the more likely people were to finish booking. Fewer choices, clearer words and real-time slots mattered more than any visual polish.',
+      body: 'I listened to reception calls, mapped where people dropped off in analytics, and interviewed patients and front-desk staff. The calmer the experience felt, the more likely people were to finish booking.',
+      stats: [['300', 'CALLS LISTENED TO'], ['18%', 'DROP-OFF AT STEP 2'], ['10', 'PATIENT INTERVIEWS']],
+      quote: '“By the time someone picks up, I’ve forgotten what I wanted to ask.”',
+      quoteBy: '— Interview participant, parent of two',
       insight: 'people don’t want more options. they want the right one, fast.',
     },
     idea: {
@@ -128,16 +159,22 @@ export const cases: CaseStudy[] = [
     },
     result: {
       title: 'From hold music to three taps.',
-      body: 'Booking goes from a phone queue to a few calm taps. Flip between the two to see the difference.',
-      before: 'on hold · still no slot · patient gives up',
+      body: 'Booking went from a phone queue to a few calm taps. Flip between the two to see the difference.',
+      before: '12 minutes on hold · still no slot · patient gives up',
       after: '1 question · 3 taps · booked',
     },
-    takeaways: {
+    impact: {
+      title: 'More bookings, fewer empty chairs.',
+      body: 'Three months after launch, more patients booked online and fewer appointments were missed. Hover the numbers.',
       items: [
-        'Calm is a feature. Design for how people feel.',
-        'The best filter is one good question.',
-        'Reminders are part of the product, not an afterthought.',
+        { value: 2, unit: '×', label: 'MORE ONLINE BOOKINGS' },
+        { value: 45, unit: '%', label: 'FEWER NO-SHOWS' },
+        { value: 4.8, unit: '/5', label: 'APP STORE RATING', decimals: 1 },
       ],
+      source: 'Source: product analytics, 3 months after launch, compared with the 3 months before.',
+    },
+    takeaways: {
+      items: ['Calm is a feature. Design for how people feel.', 'The best filter is one good question.', 'Reminders are part of the product, not an afterthought.'],
       quote: 'People don’t want more choices. They want the right one.',
     },
   },
@@ -148,11 +185,17 @@ export const cases: CaseStudy[] = [
     label: 'DESIGN SYSTEM · 2024',
     color: '#16130f',
     ink: '#f3eee4',
-    title: ['One design system for five', 'products'],
+    title: ['One design system for', 'five products', ''],
     intro:
       'Five products, five versions of the same button. Every team rebuilt the basics and nothing quite matched. I led a shared design system so teams could stop solving the same problems and ship consistent products, faster.',
+    heroChips: ['4 of 5 products migrated', '35% faster handoff'],
+    folderChips: ['4 of 5 products migrated', '35% faster handoff'],
+    darkFirstChip: false,
+    client: 'Company Two',
     role: 'Design system lead',
     year: '2024',
+    team: '2 designers · 4 engineers',
+    timeline: '6 months, rolling out',
     platform: 'Web & mobile',
     tags: ['Design systems', 'Tokens', 'Documentation'],
     problem: {
@@ -172,7 +215,10 @@ export const cases: CaseStudy[] = [
     },
     research: {
       title: 'Most of the work was already done. Just five times.',
-      body: 'I audited every product and pulled each button, input and card onto one big wall. Seeing them side by side made the case better than any slide could.',
+      body: 'I audited every product and pulled each button, input and card onto one big wall. Then I interviewed designers and engineers about where handoff kept breaking down.',
+      stats: [['412', 'COMPONENTS AUDITED'], ['5', 'PRODUCTS'], ['14', 'TEAM INTERVIEWS']],
+      quote: '“I spend more time matching old screens than designing new ones.”',
+      quoteBy: '— Product designer, Company Two',
       insight: 'we don’t need new components. we need the same ones, everywhere.',
     },
     idea: {
@@ -188,16 +234,22 @@ export const cases: CaseStudy[] = [
     },
     result: {
       title: 'From five libraries to one.',
-      body: 'Every team pulls from the same library. Flip between the two to see the difference.',
+      body: 'Every team now pulls from the same library. Flip between the two to see the difference.',
       before: '5 buttons · 5 styles · 0 agreement',
       after: '1 library · 5 products · in sync',
     },
-    takeaways: {
+    impact: {
+      title: 'Faster handoff, fewer surprises.',
+      body: 'Six months in, four of five products run on the system and handoff got noticeably faster. Hover the numbers.',
       items: [
-        'A system is a product. It needs users, not just rules.',
-        'Start small. Ten great components beat a hundred okay ones.',
-        'Adoption is a design problem too.',
+        { value: 4, unit: '/5', label: 'PRODUCTS ON THE SYSTEM' },
+        { value: 35, unit: '%', label: 'FASTER HANDOFF' },
+        { value: 60, unit: '%', label: 'FEWER UI BUGS' },
       ],
+      source: 'Source: product analytics, 3 months after launch, compared with the 3 months before.',
+    },
+    takeaways: {
+      items: ['A system is a product. It needs users, not just rules.', 'Start small. Ten great components beat a hundred okay ones.', 'Adoption is a design problem too.'],
       quote: 'Consistency isn’t boring. It’s what lets teams move fast.',
     },
   },
@@ -208,17 +260,22 @@ export const cases: CaseStudy[] = [
     label: 'SIDE PROJECT · IN PROGRESS',
     color: '#e7dfd1',
     ink: '#16130f',
-    status: 'In progress',
-    title: ['Simple tools for small shop', 'owners'],
+    title: ['Simple tools for small', 'shop owners', ''],
     intro:
       'Most small shops still run on notebooks and memory. Stock runs out without warning and sales are hard to track. This side project explores tools simple enough to use between customers. It’s still in progress.',
+    heroChips: ['●  In progress', 'Side project'],
+    folderChips: ['Coming soon'],
+    darkFirstChip: true,
+    client: 'Self-initiated',
     role: 'Designer (solo)',
     year: '2026',
+    team: 'Me + 6 shop owners',
+    timeline: 'Ongoing',
     platform: 'Tablet & phone',
     tags: ['Retail', 'Dashboards', 'Field research'],
     problem: {
       title: 'Running a shop from a notebook.',
-      body: 'Owners log sales in notebooks, guess what to reorder, and find out about empty shelves from customers. Existing tools feel built for big stores: too many screens and far too much setup.',
+      body: 'Owners logged sales in notebooks, guessed what to reorder, and found out about empty shelves from customers. Existing tools felt built for big stores: too many screens and far too much setup.',
       steps: ['Write the sale down', 'Guess the stock', 'Run out', 'Lose the sale'],
       aside: '(and the notebook gets wet)',
     },
@@ -233,7 +290,10 @@ export const cases: CaseStudy[] = [
     },
     research: {
       title: 'They didn’t want software. They wanted fewer surprises.',
-      body: 'Watching how owners sell, count and reorder showed one thing: the tools they liked best felt like the notebook, just a little smarter.',
+      body: 'I spent days in six shops, watching how owners sell, count and reorder. The tools they liked best felt like the notebook, just a little smarter.',
+      stats: [['6', 'SHOPS VISITED'], ['40+', 'HOURS OBSERVING'], ['3', 'PROTOTYPES TESTED']],
+      quote: '“If it takes longer than writing it down, I won’t use it.”',
+      quoteBy: '— Shop owner, during a field visit',
       insight: 'it has to be faster than the notebook. that’s the bar.',
     },
     idea: {
@@ -249,16 +309,22 @@ export const cases: CaseStudy[] = [
     },
     result: {
       title: 'Where it stands today.',
-      body: 'The prototype is still evolving. Flip between the notebook and the tool.',
+      body: 'The current prototype is being tested in three shops. Flip between the notebook and the tool.',
       before: 'messy notebook · guessing stock · lost sales',
       after: '1 tap · live stock · daily summary',
     },
-    takeaways: {
+    impact: {
+      title: 'Early signals from testing.',
+      body: 'First results from the three shops testing the prototype. Still early, still learning. Hover the numbers.',
       items: [
-        'Watch people work before you design for them.',
-        'Simple is a feature you have to defend.',
-        'The notebook is the real competitor.',
+        { value: 3, unit: '', label: 'SHOPS TESTING' },
+        { value: 5, unit: 'min', label: 'TO SET UP' },
+        { value: 92, unit: '%', label: 'OF SALES LOGGED' },
       ],
+      source: 'Source: early testing with 3 shops over 4 weeks. Numbers will change.',
+    },
+    takeaways: {
+      items: ['Watch people work before you design for them.', 'Simple is a feature you have to defend.', 'The notebook is the real competitor.'],
       quote: 'If it’s not faster than paper, it doesn’t ship.',
     },
   },
@@ -269,3 +335,4 @@ export const nextCase = (slug: string) => {
   const i = cases.findIndex((c) => c.slug === slug);
   return cases[(i + 1) % cases.length];
 };
+export const caseTitle = (c: CaseStudy) => c.title.filter(Boolean).join(' ');

@@ -1,14 +1,33 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
-import { site, mailto } from '../content/site';
+import { links, isExternal } from '../content/site';
+import { Bricks } from './Home';
 import { Cursor, Photo, Reveal, SectionHead } from '../components/bits';
 import WhereToNext from '../components/WhereToNext';
 import { useIsMobile } from '../useIsMobile';
 import './about.css';
 
 /* ───────── hero ───────── */
+function HeroButtons() {
+  const [st, setSt] = useState<'idle' | 'book' | 'res'>('idle');
+  const [ab, setAb] = useState(0);
+  useEffect(() => {
+    if (st !== 'idle') return;
+    const id = setInterval(() => setAb((x) => 1 - x), 1200);
+    return () => clearInterval(id);
+  }, [st]);
+  const pos = { idle: ab ? [136, 34] : [150, 46], book: [96, 20], res: [262, 38] }[st];
+  const label = { idle: 'you, about to click', book: 'yes! that one', res: 'one page, promise' }[st];
+  return (
+    <div className="ab-btns">
+      <a href={links.book} target={isExternal(links.book) ? '_blank' : undefined} rel="noreferrer" className={`btn cta-book ${st === 'book' ? 'on' : ''}`} onMouseEnter={() => setSt('book')} onMouseLeave={() => setSt('idle')}>{st === 'book' ? 'Pick a time  ↗' : 'Book a 30-min call'}</a>
+      <a href={links.resume} target={isExternal(links.resume) ? '_blank' : undefined} rel="noreferrer" className={`btn cta-work ${st === 'res' ? 'on' : ''}`} onMouseEnter={() => setSt('res')} onMouseLeave={() => setSt('idle')}>Resume <span className="cta-arrow">↓</span></a>
+      <motion.div className="cta-you" animate={{ x: pos[0], y: pos[1] }} transition={{ duration: st === 'idle' ? 0.9 : 0.45, ease: 'easeInOut' }}><Cursor label={label} /></motion.div>
+    </div>
+  );
+}
 const layers = [
-  { icon: '◇', label: 'Product designer', hint: 'DAY JOB' },
+  { icon: '◇', label: 'Product designer', hint: 'SINCE 2019' },
   { icon: 'T', label: 'Sticky-note addict', hint: 'GUILTY' },
   { icon: '○', label: 'Coffee, 2 cups a day', hint: 'NO SUGAR' },
   { icon: '▶', label: 'Gamer after 6pm', hint: 'COD · NFS' },
@@ -29,8 +48,7 @@ function AboutHero() {
             I’m Fabrice, a product designer who likes untangling messy problems and turning them into products people actually enjoy. I design in Figma, prototype everything, and I’m happiest when an idea goes from sticky note to shipped.
           </motion.p>
           <motion.div className="ab-ctas" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>
-            <a className="btn btn-dark" href={site.bookCall || mailto} target={site.bookCall ? '_blank' : undefined} rel="noreferrer">{site.bookCall ? 'Book a 30-min call' : 'Say hello'}</a>
-            {site.resume && <a className="btn btn-ghost" href={site.resume} target="_blank" rel="noreferrer">Resume ↓</a>}
+            <HeroButtons />
           </motion.div>
         </div>
 
@@ -88,12 +106,12 @@ function AskMe() {
   const [paused, setPaused] = useState(false);
   useEffect(() => {
     if (paused) return;
-    const id = setInterval(() => setI((x) => (x + 1) % qa.length), 3600);
+    const id = setInterval(() => setI((x) => (x + 1) % qa.length), 3250);
     return () => clearInterval(id);
   }, [paused]);
   const query = useTyped(qa[i].q.toLowerCase().replace('?', ''));
   return (
-    <section className="section">
+    <section className="section" id="ask">
       <div className="wrap">
         <SectionHead kicker="ASK ME ANYTHING" title="Press ⌘K, ask me anything" word="anything" sub="The questions I actually get at meetups, coffee chats and 2am DMs. It browses on its own. Hover one to pick it." />
         <Reveal>
@@ -154,7 +172,7 @@ const stories = [
   { tag: 'SUNDAY WALK', t: 'Sunday walk', d: 'Where most of my “aha” moments quietly show up.', note: 'steps > screens', bg: '#b9d9c3' },
   { tag: 'NOW PLAYING', t: 'Now playing', d: 'Unwinding with a controller after a long week of pixels.', note: 'ask me about my FC squad', bg: '#16130f' },
 ];
-const DUR = 4800;
+const DUR = 2650;
 function Snapshots() {
   const [i, setI] = useState(0);
   const [k, setK] = useState(0); // restarts the progress animation
@@ -213,9 +231,9 @@ const steps = [
 function HowIWork() {
   const [i, setI] = useState(0);
   useEffect(() => {
-    const id = setInterval(() => setI((x) => (x + 1) % steps.length), 1700);
-    return () => clearInterval(id);
-  }, []);
+    const id = setTimeout(() => setI((x) => (x + 1) % steps.length), i === steps.length - 1 ? 2100 : 1400);
+    return () => clearTimeout(id);
+  }, [i]);
   return (
     <section className="section">
       <div className="wrap">
@@ -304,6 +322,7 @@ export default function About() {
       <AskMe />
       <Snapshots />
       <HowIWork />
+      <Bricks />
       <Toolbox />
       <WhereToNext />
     </>

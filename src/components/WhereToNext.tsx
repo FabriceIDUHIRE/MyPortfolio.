@@ -1,20 +1,24 @@
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { site, mailto } from '../content/site';
+import { links, isExternal } from '../content/site';
+import { useIsMobile } from '../useIsMobile';
 import { Reveal, Title } from './bits';
 import './where.css';
 
 type Sign = { label: string; sub: string; to: string; dir: 'r' | 'l'; bg: string; fg: string; external?: boolean };
 
 export default function WhereToNext() {
-  const signs: Sign[] = [
+  const mobile = useIsMobile();
+  const all: Sign[] = [
     { label: 'Work', sub: '04 FILES', to: '/#work', dir: 'r', bg: 'var(--orange)', fg: 'var(--ink)' },
-    { label: 'Playground', sub: '12 EXPERIMENTS', to: '/playground', dir: 'l', bg: 'var(--lilac)', fg: 'var(--ink)' },
+    { label: 'Playground', sub: '24 EXPERIMENTS', to: '/playground', dir: 'l', bg: 'var(--lilac)', fg: 'var(--ink)' },
     { label: 'About', sub: 'THE LONG STORY', to: '/about', dir: 'r', bg: 'var(--card)', fg: 'var(--ink)' },
-    ...(site.resume ? [{ label: 'Resume', sub: '1 PAGE, PROMISE', to: site.resume, dir: 'l' as const, bg: 'var(--ink)', fg: 'var(--cream)', external: true }] : []),
-    ...(site.linkedin ? [{ label: 'LinkedIn', sub: 'SAY HELLO ↗', to: site.linkedin, dir: 'r' as const, bg: 'var(--sand)', fg: 'var(--ink)', external: true }] : []),
-    { label: 'Email me', sub: 'REPLIES FAST', to: mailto, dir: 'l', bg: 'var(--orange)', fg: 'var(--ink)', external: true },
+    { label: 'Resume', sub: '1 PAGE, PROMISE', to: links.resume, dir: 'l', bg: 'var(--ink)', fg: 'var(--cream)', external: true },
+    { label: 'LinkedIn', sub: 'SAY HELLO ↗', to: links.linkedin, dir: 'r', bg: 'var(--sand)', fg: 'var(--ink)', external: true },
+    { label: 'Email me', sub: 'REPLIES FAST', to: links.email, dir: 'l', bg: 'var(--orange)', fg: 'var(--ink)', external: true },
   ];
+  const signs = mobile ? all.filter((x) => x.label !== 'LinkedIn').map((x) => (x.label === 'Email me' ? { ...x, dir: 'r' as const, bg: 'var(--sand)' } : x)) : all;
   const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
   return (
@@ -44,10 +48,10 @@ export default function WhereToNext() {
                   whileInView={{ opacity: 1, rotate: i % 2 ? 1.5 : -1.5, x: 0 }}
                   viewport={{ once: true, margin: '-60px' }}
                   transition={{ type: 'spring', stiffness: 170, damping: 12, delay: i * 0.08 }}
-                  whileHover={{ rotate: s.dir === 'r' ? 4 : -4, scale: 1.04 }}
+                  whileHover={{ rotate: s.dir === 'r' ? 6 : -6, transition: { type: 'spring', stiffness: 260, damping: 9 } }}
                 >
                   {s.external ? (
-                    <a href={s.to} target={s.to.startsWith('mailto') ? undefined : '_blank'} rel="noreferrer" className="sign-shape">{inner}</a>
+                    <a href={s.to} target={isExternal(s.to) ? '_blank' : undefined} rel="noreferrer" className="sign-shape">{inner}</a>
                   ) : (
                     <Link to={s.to} className="sign-shape">{inner}</Link>
                   )}
@@ -69,24 +73,53 @@ export default function WhereToNext() {
         <div className="chat">
           <p className="chat-time mono">TODAY · {time}</p>
           <motion.div className="chat-row" initial={{ opacity: 0, y: 20, scale: 0.96 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}>
-            <span className="chat-av">FI</span>
+            <span className="chat-av">YN</span>
             <div className="bubble bubble-orange">So… you scrolled all the way down.</div>
           </motion.div>
-          <motion.div className="chat-row chat-row-2" initial={{ opacity: 0, y: 20, scale: 0.96 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}>
-            <div className="bubble bubble-lilac">Hiring for a product design role, or got something you want built properly? I’d love to hear about it.</div>
+          <motion.div className="chat-row chat-row-2" initial={{ opacity: 0, y: 20, scale: 0.96 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}>
+            <div className="bubble bubble-lilac">{mobile ? 'Hiring, or got something you want built properly? I’d love to hear about it.' : 'Hiring for a product design role, or got something you want built properly? I’d love to hear about it.'}</div>
           </motion.div>
-          <motion.div className="chat-typing" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 1.4 }}>
-            <span className="hand">you’re typing…</span>
-            <span className="dots"><i /><i /><i /></span>
-          </motion.div>
-          <motion.div className="chat-replies" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1.8, duration: 0.5 }}>
-            <a className="btn btn-ghost" href={`${mailto}?subject=${encodeURIComponent('Just saying hi 👋')}`}>Just saying hi</a>
-            <a className="btn btn-lilac" href={mailto}>Email me →</a>
-            {site.bookCall && <a className="btn btn-dark" href={site.bookCall} target="_blank" rel="noreferrer">Book a call ↗</a>}
+          <Typing />
+          <motion.div className="chat-replies" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.9, duration: 0.5 }}>
+            {mobile ? (
+              <>
+                <a className="btn btn-dark" href={links.book} target={isExternal(links.book) ? '_blank' : undefined} rel="noreferrer">Book a call  ↗</a>
+                <a className="btn btn-lilac" href={links.email}>Email me  →</a>
+                <a className="btn btn-ghost" href={links.hi}>Just saying hi</a>
+              </>
+            ) : (
+              <>
+                <a className="btn btn-ghost" href={links.hi}>Just saying hi</a>
+                <a className="btn btn-lilac" href={links.email}>Email me  →</a>
+                <a className="btn btn-dark" href={links.book} target={isExternal(links.book) ? '_blank' : undefined} rel="noreferrer">Book a call  ↗</a>
+              </>
+            )}
           </motion.div>
           <p className="chat-seen mono">SEEN · USUALLY REPLIES WITHIN A DAY</p>
         </div>
       </div>
     </section>
+  );
+}
+
+function Typing() {
+  const [reply, setReply] = useState(false);
+  useEffect(() => {
+    const id = setTimeout(() => setReply((r) => !r), reply ? 2500 : 1700);
+    return () => clearTimeout(id);
+  }, [reply]);
+  return (
+    <div className="chat-typing">
+      <AnimatePresence mode="wait" initial={false}>
+        {reply ? (
+          <motion.span key="r" className="reply" initial={{ opacity: 0, scale: 0.6, x: 20 }} animate={{ opacity: 1, scale: 1, x: 0 }} exit={{ opacity: 0, scale: 0.9 }} transition={{ type: 'spring', stiffness: 300, damping: 15 }}>ok, you got me. let’s talk!</motion.span>
+        ) : (
+          <motion.span key="t" className="typing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <span className="hand">you’re typing…</span>
+            <span className="dots"><i /><i /><i /></span>
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

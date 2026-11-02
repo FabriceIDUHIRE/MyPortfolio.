@@ -205,12 +205,12 @@ export const experiments: Experiment[] = [
 ];
 
 /** A frame-style card: hover (or tap on touch) to play. */
-export function ExperimentCard({ exp, showFrameLabel = true, dim = false }: { exp: Experiment; showFrameLabel?: boolean; dim?: boolean }) {
+export function ExperimentCard({ exp, showFrameLabel = true, dim = false, polaroid = false }: { exp: Experiment; showFrameLabel?: boolean; dim?: boolean; polaroid?: boolean }) {
   const [active, setActive] = useState(false);
   const { Toy } = exp;
   return (
     <div
-      className={`xp ${active ? 'is-active' : ''}`}
+      className={`xp ${polaroid ? 'xp-pol' : ''} ${active ? 'is-active' : ''}`}
       style={{ opacity: dim ? 0.28 : 1 }}
       onPointerEnter={(e) => e.pointerType === 'mouse' && setActive(true)}
       onPointerLeave={(e) => e.pointerType === 'mouse' && setActive(false)}
@@ -221,7 +221,7 @@ export function ExperimentCard({ exp, showFrameLabel = true, dim = false }: { ex
         <Toy active={active} />
         <div className="xp-meta">
           <b>{exp.name}</b>
-          <span className="mono">{exp.tag} · 2026</span>
+          <span className="mono">{polaroid ? exp.tag : `${exp.tag}  ·  2026`}</span>
         </div>
       </div>
     </div>

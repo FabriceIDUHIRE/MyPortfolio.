@@ -109,3 +109,23 @@
   .ds-board { grid-template-columns: 1fr; }
   .bf-notebook { width: 240px; font-size: 19px; }
 }
+
+/* tiny screens on folder papers */
+.mini { position: absolute; inset: 0; display: flex; justify-content: center; align-items: flex-start; gap: 3%; padding: 5% 4% 0; background: #f6f1e7; }
+.mini-clinic-booking { background: #ece6ff; }
+.mini-shop-tools { background: #ece5d8; }
+.phone.tiny { width: 71%; flex: none; border-width: 3px; border-radius: 12px; box-shadow: 0 6px 12px rgba(22,19,15,.15); aspect-ratio: 393 / 700; font-size: 11px; zoom: .42; }
+@supports not (zoom: 1) { .phone.tiny { transform: scale(.42); transform-origin: top center; } }
+.phone.tiny .phone-body { pointer-events: none; }
+.mini .pv-burst { animation: none; }
+.mini-ds { background: #16130f; padding: 5%; gap: 4%; justify-content: flex-start; color: var(--cream); font-size: 9px; }
+.mini-ds-side { width: 30%; display: flex; flex-direction: column; gap: 6px; }
+.mini-ds-side b { font-size: 10px; margin-bottom: 4px; }
+.mini-ds-side span { padding: 4px 6px; border-radius: 5px; opacity: .7; }
+.mini-ds-side span.on { background: rgba(243,238,228,.12); opacity: 1; }
+.mini-ds-main { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.mini-ds-row { display: flex; gap: 6px; align-items: center; }
+.mini-ds .ds-b { padding: 5px 9px; font-size: 9px; border-radius: 6px; }
+.mini-ds .ds-in { flex: 1; padding: 5px 8px; font-size: 9px; border-radius: 6px; }
+.mini-ds .ds-tg { width: 26px; height: 15px; } .mini-ds .ds-tg i { width: 11px; height: 11px; top: 2px; right: 2px; }
+.mini-ds-sw { display: flex; gap: 6px; } .mini-ds-sw i { width: 22px; height: 22px; border-radius: 6px; }

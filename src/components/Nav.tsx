@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { site, mailto } from '../content/site';
 import { Photo } from './bits';
@@ -16,6 +16,12 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const on = (e: KeyboardEvent) => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); navigate('/about#ask'); } };
+    window.addEventListener('keydown', on);
+    return () => window.removeEventListener('keydown', on);
+  }, [navigate]);
 
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
@@ -59,6 +65,8 @@ export default function Nav() {
             })}
           </nav>
 
+          <div className="nav-actions">
+          <Link to="/about#ask" className="nav-k mono" title="Ask me anything">⌘K</Link>
           <button className="nav-email" onClick={copy} aria-live="polite">
             <span>{copied ? 'copied to clipboard!' : site.email}</span>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
@@ -66,6 +74,7 @@ export default function Nav() {
               <path d="M9.5 2.2A1.5 1.5 0 0 0 8 1H2.5A1.5 1.5 0 0 0 1 2.5V8a1.5 1.5 0 0 0 1.2 1.5" stroke="currentColor" strokeWidth="1.5" />
             </svg>
           </button>
+          </div>
 
           <button className="nav-menu-btn" onClick={() => setOpen(true)} aria-expanded={open} aria-controls="mobile-menu">
             Menu

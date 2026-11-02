@@ -9,13 +9,16 @@
 .nav-link.active .nav-link-text { color: var(--cream); }
 .nav-link:not(.active):hover { background: rgba(22,19,15,.06); }
 .nav-pill { position: absolute; inset: 0; background: var(--ink); border-radius: 999px; }
-.nav-email { justify-self: end; display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border: 1.5px solid var(--ink); border-radius: 999px; font-weight: 700; font-size: 14px; transition: background .2s, color .2s, transform .25s var(--ease-bounce); }
+.nav-actions { justify-self: end; display: flex; align-items: center; gap: 10px; }
+.nav-k { display: grid; place-items: center; height: 38px; padding: 0 12px; border-radius: 10px; background: var(--white); border: 1px solid var(--line); font-size: 13px; transition: transform .25s var(--ease-bounce); }
+.nav-k:hover { transform: translateY(-2px); }
+.nav-email { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border: 1.5px solid var(--ink); border-radius: 999px; font-weight: 700; font-size: 14px; transition: background .2s, color .2s, transform .25s var(--ease-bounce); }
 .nav-email:hover { background: var(--ink); color: var(--cream); transform: rotate(-2deg); }
 .nav-menu-btn { display: none; }
 
 @media (max-width: 900px) {
   .nav-inner { grid-template-columns: 1fr auto; height: 68px; }
-  .nav-links, .nav-email { display: none; }
+  .nav-links, .nav-actions { display: none; }
   .nav-logo { font-size: 16px; }
   .nav-avatar { width: 36px; height: 36px; }
   .nav-menu-btn { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; border-radius: 999px; background: var(--ink); color: var(--cream); font-weight: 600; font-size: 15px; }
