@@ -92,10 +92,10 @@
 .sw-head { display: grid; grid-template-columns: 1fr minmax(0, 360px); gap: 32px; align-items: start; margin-bottom: 20px; }
 .sw-count { font-size: 18px; letter-spacing: .02em; color: var(--muted); vertical-align: super; margin-left: 14px; font-weight: 500; }
 .sw-head .lead { padding-top: 14px; }
-.pile { position: relative; width: 1384px; height: 1310px; }
+.pile { position: relative; width: 1384px; height: 1110px; }
 .pile-item { position: absolute; left: 0; top: 0; }
-.pile-label { position: absolute; left: 0; right: 0; top: 280px; text-align: center; font-size: 12px; letter-spacing: .1em; color: var(--muted); margin: 0; }
-.pile-hint { position: absolute; left: 1070px; top: 430px; }
+.pile-label { position: absolute; left: 0; right: 0; top: 300px; text-align: center; font-size: 12px; letter-spacing: .1em; color: var(--muted); margin: 0; }
+.pile-hint { position: absolute; left: 1070px; top: 450px; }
 .pile-hint p { margin: 0; font-size: 30px; line-height: 1.05; transform: rotate(-4deg); }
 .pile-hint svg { display: block; margin: 4px 0 0 -24px; }
 .pile-cursor { margin: 20px 0 0 70px; }
@@ -231,3 +231,6 @@
   .pg-row { display: flex; width: max-content; padding: 16px 20px 20px 0; gap: 16px; }
   .pg-polaroid { width: 230px; margin-top: 0 !important; scroll-snap-align: start; transform: none !important; }
 }
+#work { padding-bottom: 8px; }
+#work + .section { padding-top: 64px; }
+@media (max-width: 900px) { #work { padding-bottom: 24px; } #work + .section { padding-top: 40px; } }

@@ -206,8 +206,8 @@ function Hero() {
 }
 
 /* ═══════════════ SELECTED WORK ═══════════════ */
-const pileAt = [[376, 344, 2], [364, 356, -4], [386, 368, 5], [358, 380, -7]];
-const spreadAt = [[680, 20, 2], [20, 280, -2], [744, 540, 3], [20, 800, -1]];
+const pileAt = [[376, 364, 2], [364, 376, -4], [386, 388, 5], [358, 400, -7]];
+const spreadAt = [[680, 10, 2], [20, 220, -2], [744, 440, 3], [20, 650, -1]];
 function SelectedWork() {
   const mobile = useIsMobile();
   const [spread, setSpread] = useState(false);
@@ -226,7 +226,7 @@ function SelectedWork() {
             <p className="hand swipe-note">press &amp; hold a folder to peek inside</p>
           </>
         ) : (
-          <Stage w={1384} h={1310}>
+          <Stage w={1384} h={1110}>
             <div className="pile" onMouseEnter={() => setSpread(true)} onMouseLeave={() => setSpread(false)}>
               <motion.p className="mono pile-label" animate={{ opacity: spread ? 0 : 1 }}>04 FILES  ·  NEATLY PILED</motion.p>
               {[...cases].reverse().map((c) => {
