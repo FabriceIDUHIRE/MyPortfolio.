@@ -9,7 +9,7 @@ const filters: ('All' | Category)[] = ['All', 'Apps', 'Motion', 'Tools', 'Fun'];
 
 function Stickers() {
   const s = [
-    { cls: 'stk-burst', txt: <>12<br />experiments</>, hover: <>and<br />counting!</>, r: -12, d: 0.3 },
+    { cls: 'stk-burst', txt: <>12<br />experiments</>, hover: <>and<br />counting!</>, r: -10, d: 0.3 },
     { cls: 'stk-lilac', txt: <>6<br />shipped</>, hover: <>to real<br />humans</>, r: 8, d: 0.45 },
     { cls: 'stk-ink', txt: <>0<br />regrets</>, hover: <>ok,<br />maybe 1</>, r: -6, d: 0.6 },
   ];
