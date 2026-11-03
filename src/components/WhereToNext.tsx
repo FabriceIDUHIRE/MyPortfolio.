@@ -11,12 +11,12 @@ type Sign = { label: string; sub: string; to: string; dir: 'r' | 'l'; bg: string
 export default function WhereToNext() {
   const mobile = useIsMobile();
   const all: Sign[] = [
-    { label: 'Work', sub: '04 FILES', to: '/#work', dir: 'r', bg: 'var(--orange)', fg: 'var(--ink)' },
-    { label: 'Playground', sub: '24 EXPERIMENTS', to: '/playground', dir: 'l', bg: 'var(--lilac)', fg: 'var(--ink)' },
+    { label: 'Work', sub: '04 FILES', to: '/#work', dir: 'r', bg: 'var(--orange)', fg: 'var(--ink-0)' },
+    { label: 'Playground', sub: '24 EXPERIMENTS', to: '/playground', dir: 'l', bg: 'var(--lilac)', fg: 'var(--ink-0)' },
     { label: 'About', sub: 'THE LONG STORY', to: '/about', dir: 'r', bg: 'var(--card)', fg: 'var(--ink)' },
     { label: 'Resume', sub: '1 PAGE, PROMISE', to: links.resume, dir: 'l', bg: 'var(--ink)', fg: 'var(--cream)', external: true },
     { label: 'LinkedIn', sub: 'SAY HELLO ↗', to: links.linkedin, dir: 'r', bg: 'var(--sand)', fg: 'var(--ink)', external: true },
-    { label: 'Email me', sub: 'REPLIES FAST', to: links.email, dir: 'l', bg: 'var(--orange)', fg: 'var(--ink)', external: true },
+    { label: 'Email me', sub: 'REPLIES FAST', to: links.email, dir: 'l', bg: 'var(--orange)', fg: 'var(--ink-0)', external: true },
   ];
   const signs = mobile ? all.filter((x) => x.label !== 'LinkedIn').map((x) => (x.label === 'Email me' ? { ...x, dir: 'r' as const, bg: 'var(--sand)' } : x)) : all;
   const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });

@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { site, mailto } from '../content/site';
 import { Photo } from './bits';
+import ThemeToggle from './ThemeToggle';
 import './nav.css';
 
 const links = [
@@ -72,6 +73,7 @@ export default function Nav() {
           </nav>
 
           <div className="nav-actions">
+          <ThemeToggle />
           <button className="nav-k mono" title="Ask me anything (⌘K)" onClick={goAsk}>⌘K</button>
           <button className="nav-email" onClick={copy} aria-live="polite">
             <span>{copied ? 'copied to clipboard!' : site.email}</span>
@@ -82,10 +84,13 @@ export default function Nav() {
           </button>
           </div>
 
+          <div className="nav-mobile">
+          <ThemeToggle />
           <button className="nav-menu-btn" onClick={() => setOpen(true)} aria-expanded={open} aria-controls="mobile-menu">
             Menu
             <svg width="18" height="12" viewBox="0 0 18 12" aria-hidden><path d="M1 1h16M1 6h16M7 11h10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
           </button>
+          </div>
         </div>
       </header>
 

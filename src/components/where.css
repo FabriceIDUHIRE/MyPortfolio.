@@ -20,10 +20,10 @@
 .chat-time { text-align: center; font-size: 12px; letter-spacing: .08em; color: var(--muted); margin: 0 0 18px; }
 .chat-row { display: flex; align-items: flex-end; gap: 12px; }
 .chat-row-2 { padding-left: 48px; margin-top: 10px; }
-.chat-av { flex: none; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--lilac); border: 1.5px solid var(--ink); font-family: var(--f-display); font-weight: 800; font-size: 13px; }
+.chat-av { flex: none; color: var(--ink-0); width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--lilac); border: 1.5px solid var(--ink); font-family: var(--f-display); font-weight: 800; font-size: 13px; }
 .bubble { padding: 20px 26px; border-radius: 24px; border: 1.5px solid var(--ink); max-width: 560px; }
-.bubble-orange { background: repeating-linear-gradient(135deg, var(--orange) 0 14px, #ff6b42 14px 28px); font-family: var(--f-display); font-weight: 800; font-size: clamp(24px, 3vw, 40px); letter-spacing: -0.02em; line-height: 1.1; border-bottom-left-radius: 6px; }
-.bubble-lilac { background: var(--lilac) repeating-radial-gradient(circle at 100% 140%, transparent 0 22px, rgba(22,19,15,.06) 22px 24px); font-weight: 500; font-size: clamp(17px, 1.6vw, 21px); line-height: 1.45; border-top-left-radius: 6px; }
+.bubble-orange { color: var(--ink-0); background: repeating-linear-gradient(135deg, var(--orange) 0 14px, #ff6b42 14px 28px); font-family: var(--f-display); font-weight: 800; font-size: clamp(24px, 3vw, 40px); letter-spacing: -0.02em; line-height: 1.1; border-bottom-left-radius: 6px; }
+.bubble-lilac { color: var(--ink-0); background: var(--lilac) repeating-radial-gradient(circle at 100% 140%, transparent 0 22px, rgba(22,19,15,.06) 22px 24px); font-weight: 500; font-size: clamp(17px, 1.6vw, 21px); line-height: 1.45; border-top-left-radius: 6px; }
 .chat-typing { display: flex; justify-content: flex-end; align-items: center; min-height: 48px; margin-top: 22px; }
 .typing { display: flex; align-items: center; gap: 12px; font-size: 22px; color: var(--muted); }
 .reply { display: inline-block; background: var(--ink); color: var(--cream); padding: 12px 18px; border-radius: 20px; border-bottom-right-radius: 6px; font-weight: 600; font-size: 16px; }

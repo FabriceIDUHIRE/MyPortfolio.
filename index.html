@@ -5,6 +5,15 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f3eee4" />
+    <script>
+      try {
+        var t = localStorage.getItem('fi-theme');
+        if (t === 'dark') {
+          document.documentElement.dataset.theme = 'dark';
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#14110d');
+        }
+      } catch (e) {}
+    </script>
     <title>Fabrice Iduhire · Product designer</title>
     <meta name="description" content="Fabrice Iduhire is a product designer who takes tangled problems and turns them into products people actually enjoy using." />
     <meta property="og:title" content="Fabrice Iduhire · Product designer" />

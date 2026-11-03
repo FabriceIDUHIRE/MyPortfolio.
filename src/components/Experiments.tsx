@@ -62,7 +62,7 @@ function FocusTimer({ active }: { active: boolean }) {
   const ss = String(s % 60).padStart(2, '0');
   const deg = ((25 * 60 - s) / (25 * 60)) * 360;
   return (
-    <div className="toy" style={{ background: 'var(--sand)' }}>
+    <div className="toy" style={{ background: 'var(--sand-0)' }}>
       <span className="ft-time mono">{mm}:{ss}</span>
       <div className="ft-face"><i style={{ transform: `rotate(${deg}deg)` }} /><b /></div>
     </div>
@@ -81,9 +81,9 @@ function SquishyToggle({ active }: { active: boolean }) {
   );
 }
 function LoadingBlobs({ active }: { active: boolean }) {
-  const cols = ['var(--orange)', 'var(--lilac)', 'var(--cream)'];
+  const cols = ['var(--orange)', 'var(--lilac)', 'var(--cream-0)'];
   return (
-    <div className="toy" style={{ background: 'var(--ink)' }}>
+    <div className="toy" style={{ background: 'var(--ink-0)' }}>
       <div className="lb-row">
         {cols.map((c, i) => (
           <motion.span key={i} style={{ background: c }} animate={active ? { y: [0, -22, 0], scale: [1, 1.15, 1] } : { y: 0, scale: 1 }} transition={active ? { repeat: Infinity, duration: 0.9, delay: i * 0.15, ease: 'easeInOut' } : { duration: 0.3 }} />
@@ -99,17 +99,17 @@ function MagneticButton({ active }: { active: boolean }) {
   useEffect(() => { if (!active) { x.set(0); y.set(0); } }, [active, x, y]);
   return (
     <div
-      className="toy" ref={ref} style={{ background: 'var(--cream)' }}
+      className="toy" ref={ref} style={{ background: 'var(--cream-0)' }}
       onPointerMove={(e) => { const r = ref.current!.getBoundingClientRect(); x.set((e.clientX - r.left - r.width / 2) * 0.35); y.set((e.clientY - r.top - r.height / 2) * 0.35); }}
     >
-      <motion.span className="mb-btn" style={{ x, y, background: active ? 'var(--orange)' : 'var(--ink)', color: active ? 'var(--ink)' : 'var(--cream)' }}>Hover me</motion.span>
+      <motion.span className="mb-btn" style={{ x, y, background: active ? 'var(--orange)' : 'var(--ink-0)', color: active ? 'var(--ink-0)' : 'var(--cream-0)' }}>Hover me</motion.span>
     </div>
   );
 }
 function TypeTester({ active }: { active: boolean }) {
   const w = useCount(800, active, 400, 600);
   return (
-    <div className="toy" style={{ background: 'var(--ink)' }}>
+    <div className="toy" style={{ background: 'var(--ink-0)' }}>
       <span className="tt-w mono">{w}</span>
       <motion.span className="tt-aa" animate={{ color: active ? '#ff5b2e' : '#f3eee4', scale: active ? 1.12 : 1 }} transition={spring}>Aa</motion.span>
       <div className="tt-slider"><motion.i animate={{ left: active ? '88%' : '18%' }} transition={spring} /></div>
@@ -118,7 +118,7 @@ function TypeTester({ active }: { active: boolean }) {
 }
 function ContrastChecker({ active }: { active: boolean }) {
   return (
-    <div className="toy" style={{ background: 'var(--card)' }}>
+    <div className="toy" style={{ background: 'var(--card-0)' }}>
       <div className="cc-row">
         <motion.span className="cc-sw" animate={{ background: '#16130f', color: active ? '#ff5b2e' : '#f3eee4' }}>Aa</motion.span>
         <motion.span className="cc-sw" animate={{ background: active ? '#ffffff' : '#e7dfd1', color: '#16130f' }}>Aa</motion.span>
@@ -138,7 +138,7 @@ function ColorNamer({ active }: { active: boolean }) {
   }, [active]);
   const [name, hex] = palette[i];
   return (
-    <div className="toy" style={{ background: 'var(--sand)' }}>
+    <div className="toy" style={{ background: 'var(--sand-0)' }}>
       <motion.span className="cn-dot" animate={{ background: hex }} transition={{ duration: 0.4 }} />
       <div className="cn-txt">
         <AnimatePresence mode="wait"><motion.b key={name} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>{name}</motion.b></AnimatePresence>
@@ -152,7 +152,7 @@ const wink = ['..XXXXX..', '.XXXXXXX.', 'XX.XXXXXX', 'XX.XX...X', 'XXXXXXXXX', '
 function PixelMe({ active }: { active: boolean }) {
   const g = active ? wink : face;
   return (
-    <div className="toy" style={{ background: 'var(--card)' }}>
+    <div className="toy" style={{ background: 'var(--card-0)' }}>
       <div className="px-grid">{g.join('').split('').map((c, i) => <motion.i key={i} animate={{ opacity: c === 'X' ? 1 : 0, scale: c === 'X' ? 1 : 0.4 }} transition={{ duration: 0.18, delay: (i % 9) * 0.01 }} />)}</div>
     </div>
   );
@@ -160,9 +160,9 @@ function PixelMe({ active }: { active: boolean }) {
 function HumToSearch({ active }: { active: boolean }) {
   const hs = [20, 44, 30, 70, 50, 88, 40, 64, 30, 76, 46, 24, 56, 34];
   return (
-    <div className="toy" style={{ background: 'var(--sand)' }}>
+    <div className="toy" style={{ background: 'var(--sand-0)' }}>
       <div className="hs-wave">{hs.map((h, i) => (
-        <motion.i key={i} style={{ background: i % 3 === 0 ? 'var(--orange)' : 'var(--ink)' }} animate={active ? { height: [h * 0.4, h, h * 0.6, h] } : { height: h * 0.8 }} transition={active ? { repeat: Infinity, duration: 0.8, delay: i * 0.05, ease: 'easeInOut' } : { duration: 0.3 }} />
+        <motion.i key={i} style={{ background: i % 3 === 0 ? 'var(--orange)' : 'var(--ink-0)' }} animate={active ? { height: [h * 0.4, h, h * 0.6, h] } : { height: h * 0.8 }} transition={active ? { repeat: Infinity, duration: 0.8, delay: i * 0.05, ease: 'easeInOut' } : { duration: 0.3 }} />
       ))}</div>
     </div>
   );
@@ -173,7 +173,7 @@ function ConfettiCannon({ active }: { active: boolean }) {
   const bits = Array.from({ length: 16 });
   const cols = ['#ff5b2e', '#c9b8ff', '#f3eee4'];
   return (
-    <div className="toy" style={{ background: 'var(--ink)', cursor: 'pointer' }} onClick={(e) => { e.stopPropagation(); setBurst((b) => b + 1); }}>
+    <div className="toy" style={{ background: 'var(--ink-0)', cursor: 'pointer' }} onClick={(e) => { e.stopPropagation(); setBurst((b) => b + 1); }}>
       <motion.span className="cf-cannon" animate={{ rotate: active ? -32 : -24 }} />
       {burst > 0 && bits.map((_, i) => {
         const a = (-70 + (i / bits.length) * 60) * (Math.PI / 180);

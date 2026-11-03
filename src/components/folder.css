@@ -12,8 +12,8 @@
 .folder-title { margin-top: 10px; font-family: var(--f-display); font-weight: 800; font-size: 34px; line-height: 1.04; letter-spacing: -0.025em; max-width: 92%; }
 .folder-chips { margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; }
 .chip { font-size: 14px; font-weight: 500; padding: 7px 14px; border-radius: 999px; border: 1.5px solid currentColor; white-space: nowrap; }
-.chip-dark { background: var(--ink); color: var(--cream); border-color: var(--ink); }
-.chip-light { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+.chip-dark { background: var(--ink-0); color: var(--cream-0); border-color: var(--ink-0); }
+.chip-light { background: var(--cream-0); color: var(--ink-0); border-color: var(--cream-0); }
 
 .folder:hover .folder-paper.pb, .folder.is-peek .folder-paper.pb { transform: translateY(-47px) rotate(7deg); }
 .folder:hover .folder-paper.pf, .folder.is-peek .folder-paper.pf { transform: translateY(-50px) rotate(-5deg); }

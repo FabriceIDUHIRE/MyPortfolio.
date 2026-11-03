@@ -36,6 +36,24 @@
   :root { --gutter: 20px; }
 }
 
+/* ── Dark mode: the same tokens, night edition ──
+   --ink-0 / --cream-0 never flip: use them for things that are
+   physically coloured (stickers, sticky notes, lilac/orange chips). */
+:root { --ink-0: #16130f; --cream-0: #f3eee4; --sand-0: #e7dfd1; --card-0: #faf7f1; --white-0: #ffffff; --grid: rgba(22,19,15,.045); color-scheme: light; }
+[data-theme='dark'] {
+  color-scheme: dark;
+  --cream: #14110d;
+  --ink: #f1ebdf;
+  --card: #1e1a15;
+  --sand: #2a241d;
+  --white: #231e18;
+  --muted: #a89e91;
+  --line: rgba(241, 235, 223, 0.13);
+  --orange-deep: #ff8a63;
+  --grid: rgba(241,235,223,.05);
+}
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 body {
@@ -51,7 +69,7 @@ body {
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
-::selection { background: var(--lilac); color: var(--ink); }
+::selection { background: var(--lilac); color: var(--ink-0); }
 :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
 
 .wrap { width: 100%; max-width: calc(var(--page) + var(--gutter) * 2); margin: 0 auto; padding: 0 var(--gutter); }
@@ -76,19 +94,19 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .btn-dark:hover { transform: translateY(-2px) rotate(-1deg); box-shadow: 0 6px 0 rgba(0,0,0,.25); }
 .btn-ghost { border: 1.5px solid var(--ink); }
 .btn-ghost:hover { background: var(--ink); color: var(--cream); transform: translateY(-2px) rotate(1deg); }
-.btn-lilac { background: var(--lilac); border: 1.5px solid var(--ink); }
+.btn-lilac { background: var(--lilac); color: var(--ink-0); border: 1.5px solid var(--ink-0); }
 .btn-lilac:hover { transform: translateY(-2px) rotate(-1deg); }
 
 .grid-bg {
   background-image:
-    linear-gradient(rgba(22,19,15,.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(22,19,15,.045) 1px, transparent 1px);
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
 .cursor-tag { display: inline-flex; align-items: flex-start; gap: 2px; pointer-events: none; }
-.cursor-tag .label { margin-top: 16px; font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 5px; background: var(--orange); color: var(--white); white-space: nowrap; }
-.cursor-tag.lilac .label { background: var(--lilac); color: var(--ink); }
+.cursor-tag .label { margin-top: 16px; font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 5px; background: var(--orange); color: #fff; white-space: nowrap; }
+.cursor-tag.lilac .label { background: var(--lilac); color: var(--ink-0); }
 
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
@@ -99,3 +117,27 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .roller { display: inline-block; height: 1em; line-height: 1; overflow: hidden; vertical-align: top; }
 .roller-strip { display: flex; flex-direction: column; }
 .roller-strip span { height: 1em; line-height: 1; }
+
+/* ── Dark mode fixes ──
+   Anything sitting on lilac or orange keeps dark ink, like printed paper. */
+[data-theme='dark'] :is(
+  .sticky, .mmenu-sticky, .av.lilac, .cta-book.on, .am-btn, .a-messy, .a-system, .a-notes .n2, .a-notes .n4,
+  .brick-orange, .brick-lilac, .cursor-lilac-tag, .stk-lilac-in, .stk-burst-in, .ws-sticky, .pg-burst,
+  .insight-note, .idea-step.is-0, .idea-step.is-3, .step-chip.last, .impact-card.hot, .contents .contents-top,
+  .fa-0, .fa-2, .wom-av, .tool[style*='--orange'], .tool[style*='--lilac']
+) { color: var(--ink-0); }
+[data-theme='dark'] .nav.is-scrolled { background: rgba(20, 17, 13, .82); }
+[data-theme='dark'] .qhl { background-image: linear-gradient(rgba(255,91,46,.55), rgba(255,91,46,.55)); }
+[data-theme='dark'] :is(.layer.on, .pal-hi, .ws-hi, .ba-stage.is-after, .props-tags span.t1) { background: rgba(201,184,255,.18); }
+[data-theme='dark'] .props-tags span { background: rgba(255,91,46,.2); }
+[data-theme='dark'] :is(.ruler, .ruler-y i) { background: var(--line); }
+[data-theme='dark'] .contents { background: rgba(35,30,24,.94); box-shadow: 0 0 0 1px var(--line), 0 12px 30px rgba(0,0,0,.4); }
+[data-theme='dark'] :is(.layers, .palette, .cmt-bubble, .props, .ws-pages) { box-shadow: 0 0 0 1px var(--line), 0 18px 40px rgba(0,0,0,.35); }
+[data-theme='dark'] .sticky-tape { background: rgba(255,255,255,.35); }
+[data-theme='dark'] .grid-bg { background-color: transparent; }
+/* hand-drawn arrows & doodles drawn in ink on the page */
+[data-theme='dark'] main svg :is([stroke='#16130f']) { stroke: var(--ink); }
+[data-theme='dark'] main :is(.folder, .phone, .cover, .toy, .brick, .sign-shape, .post-here) svg [stroke='#16130f'] { stroke: #16130f; }
+[data-theme='dark'] .toolbox { background: var(--card); box-shadow: inset 0 0 0 1px var(--line); }
+[data-theme='dark'] :is(.bf-notebook, .cover, .mini, .phone, .folder-paper) { color: var(--ink-0); }
+[data-theme='dark'] .footer { box-shadow: 0 -1px 0 var(--line); }
