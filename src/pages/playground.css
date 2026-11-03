@@ -11,12 +11,12 @@
 .stk span { position: relative; }
 .stk-burst { left: 17%; top: 12.5%; width: 31.9%; height: 31.25%; font-size: 3.83cqw; }
 .stk-burst-in::before { content: ''; position: absolute; inset: 0; background: var(--orange); clip-path: polygon(50% 0%, 59% 15%, 75% 7%, 77% 25%, 93% 25%, 87% 41%, 100% 50%, 87% 59%, 93% 75%, 77% 75%, 75% 93%, 59% 85%, 50% 100%, 41% 85%, 25% 93%, 23% 75%, 7% 75%, 13% 59%, 0% 50%, 13% 41%, 7% 25%, 23% 25%, 25% 7%, 41% 15%); }
-.stk-lilac { left: 57.4%; top: 35.4%; width: 29.8%; height: 29.2%; font-size: 4.47cqw; }
+.stk-lilac { left: 63.8%; top: 37.5%; width: 29.8%; height: 29.2%; font-size: 4.47cqw; }
 .stk-lilac-in { border-radius: 50%; background: var(--lilac); }
-.stk-ink { left: 25.5%; top: 56.25%; width: 29.8%; height: 29.2%; font-size: 4.47cqw; }
+.stk-ink { left: 19.1%; top: 60.4%; width: 29.8%; height: 29.2%; font-size: 4.47cqw; }
 .stk-ink-in { border-radius: 50%; background: var(--ink); color: var(--cream); }
 .stk-ink span { font-size: 1em; }
-.stk-note { position: absolute; left: 54.7%; top: 82.3%; margin: 0; font-size: 5.1cqw; white-space: nowrap; }
+.stk-note { position: absolute; left: 61%; top: 84%; margin: 0; font-size: 5.1cqw; white-space: nowrap; }
 
 .ws { display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: start; }
 .ws > * { min-width: 0; }
