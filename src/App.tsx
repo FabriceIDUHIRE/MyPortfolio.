@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
+import Blueprint from './components/Blueprint';
 import Home from './pages/Home';
 import About from './pages/About';
 import Playground from './pages/Playground';
@@ -44,6 +45,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <Blueprint />
     </>
   );
 }
