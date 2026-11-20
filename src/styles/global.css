@@ -5,7 +5,8 @@
 @import '@fontsource/dm-sans/500.css';
 @import '@fontsource/dm-sans/600.css';
 @import '@fontsource/dm-sans/700.css';
-@import '@fontsource/jetbrains-mono/500.css';
+@import '@fontsource/poppins/500.css';
+@import '@fontsource/poppins/600.css';
 @import '@fontsource/caveat/700.css';
 
 :root {
@@ -23,7 +24,7 @@
   --f-display: 'Bricolage Grotesque', system-ui, sans-serif;
   --f-serif: 'Instrument Serif', Georgia, serif;
   --f-body: 'DM Sans', system-ui, sans-serif;
-  --f-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --f-mono: 'Poppins', system-ui, sans-serif;
   --f-hand: 'Caveat', cursive;
 
   --page: 1384px;
