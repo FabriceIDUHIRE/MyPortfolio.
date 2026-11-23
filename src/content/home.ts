@@ -1,11 +1,11 @@
 // Home page text. Swap the placeholders (companies, quotes, numbers) for your real ones here.
-export const currently = 'CURRENTLY DESIGNING AT COMPANY ONE  ·  OPEN TO NEW ROLES';
-export const currentlyMobile = 'AT COMPANY ONE  ·  OPEN TO ROLES';
+export const currently = 'Currently designing at Company One. Open to new roles';
+export const currentlyMobile = 'At Company One. Open to roles';
 
 export const stats = [
-  { value: 6, suffix: '+', step: 1, label: 'YEARS DESIGNING', short: 'YEARS' },
-  { value: 20, suffix: '+', step: 4, label: 'PRODUCTS SHIPPED', short: 'SHIPPED' },
-  { value: 3, suffix: '', step: 1, label: 'DESIGN SYSTEMS', short: 'SYSTEMS' },
+  { value: 6, suffix: '+', step: 1, label: 'Years designing', short: 'Years' },
+  { value: 20, suffix: '+', step: 4, label: 'Products shipped', short: 'Shipped' },
+  { value: 3, suffix: '', step: 1, label: 'Design systems', short: 'Systems' },
 ];
 
 // Bottom brick first (the foundation), top brick last (now)
@@ -14,7 +14,7 @@ export const bricks = [
   { years: '2020 → 21', company: 'Company Four', role: 'Product Designer', color: 'lilac', x: 40, year: '2020' },
   { years: '2021 → 23', company: 'Company Three', role: 'Product Designer', color: 'card', x: 24, year: '2021' },
   { years: '2023 → 25', company: 'Company Two', role: 'Senior Product Designer', color: 'ink', x: 38, year: '2023' },
-  { years: '2025 → NOW', company: 'Company One', role: 'Senior Product Designer', color: 'orange', x: 31, year: '2025', now: true },
+  { years: '2025 → now', company: 'Company One', role: 'Senior Product Designer', color: 'orange', x: 31, year: '2025', now: true },
 ];
 
 export const quotes = [

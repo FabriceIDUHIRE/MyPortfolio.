@@ -107,7 +107,7 @@ export default function Nav() {
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="mmenu-top">
-              <span className="mono">MENU</span>
+              <span className="mono">Menu</span>
               <button className="mmenu-close" onClick={() => setOpen(false)}>Close ×</button>
             </div>
             <ul className="mmenu-links">

@@ -15,8 +15,8 @@ function Chapter({ n, id, children }: { n: number; id: string; children: ReactNo
     <section className="chapter" id={id}>
       <div className="wrap chapter-inner">
         <Reveal className="chapter-num">
-          <span className="chapter-n">0{n}</span>
-          <span className="mono chapter-l">{chapters[n - 1].toUpperCase()}</span>
+          <span className="chapter-n">{n}</span>
+          <span className="mono chapter-l">{chapters[n - 1]}</span>
         </Reveal>
         <div className="chapter-body">{children}</div>
       </div>
@@ -86,7 +86,7 @@ export default function CaseStudyPage() {
             <Link to="/#work" className="crumb-back">←  All work</Link>
             <span className="crumb-sep">/</span>
             <span className="crumb-file mono"><i style={{ background: c.color }} />{c.file}</span>
-            <span className="crumb-count mono">CASE STUDY 0{c.index} / 0{cases.length}</span>
+            <span className="crumb-count mono">Case study {c.index} of {cases.length}</span>
           </div>
           <div className="case-hero-grid">
             <div>
@@ -131,9 +131,9 @@ export default function CaseStudyPage() {
         <div className="stakes">
           {c.stakes.items.map((s, i) => (
             <Reveal key={s.wrong} delay={i * 0.1} className="stake">
-              <p className="mono stake-k red">WHAT WENT WRONG</p>
+              <p className="mono stake-k red">What went wrong</p>
               <h3>{s.wrong}</h3>
-              <p className="mono stake-k">→  DESIGN RESPONSE</p>
+              <p className="mono stake-k">→  Design response</p>
               <p className="stake-r">{s.response}</p>
             </Reveal>
           ))}
@@ -150,7 +150,7 @@ export default function CaseStudyPage() {
         <div className="rquote-row">
           <Reveal className="rquote"><p>{c.research.quote}</p><span>{c.research.quoteBy}</span></Reveal>
           <motion.div className="insight-note" initial={{ opacity: 0, rotate: 0, y: 30 }} whileInView={{ opacity: 1, rotate: -2, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 160, damping: 12, delay: 0.2 }}>
-            <span className="mono">KEY INSIGHT</span>
+            <span className="mono">Key insight</span>
             <p className="hand">{c.research.insight}</p>
           </motion.div>
         </div>
@@ -161,7 +161,7 @@ export default function CaseStudyPage() {
         <div className="idea-steps">
           {c.idea.steps.map((s, i) => (
             <Reveal key={s.t} delay={i * 0.12} className={`idea-step is-${i}`}>
-              <span className="mono">0{i + 1}</span>
+              <span className="mono">{i + 1}</span>
               <h3>{s.t}</h3>
               <p>{s.d}</p>
               {i < 3 && <i className="idea-arrow" aria-hidden />}
@@ -210,10 +210,10 @@ export default function CaseStudyPage() {
       </Chapter>
 
       <Chapter n={7} id="ch-7">
-        <Reveal><h2 className="h-md">What I’m taking to the next project.</h2></Reveal>
+        <Reveal><h2 className="h-md">What I’m taking to the next project</h2></Reveal>
         <ol className="takeaways">
           {c.takeaways.items.map((t, i) => (
-            <Reveal key={t} delay={i * 0.08}><li><span className="mono">0{i + 1}</span>{t}</li></Reveal>
+            <Reveal key={t} delay={i * 0.08}><li><span className="mono">{i + 1}</span>{t}</li></Reveal>
           ))}
         </ol>
         <Reveal><blockquote className="case-quote">{c.takeaways.quote}</blockquote></Reveal>
@@ -221,7 +221,7 @@ export default function CaseStudyPage() {
 
       <section className="section next-case">
         <div className="wrap next-inner">
-          <span className="kicker">{nx.index === 1 ? '{ BACK TO THE FIRST ONE }' : '{ NEXT CASE STUDY }'}</span>
+          <span className="kicker">{nx.index === 1 ? 'Back to the first one' : 'Next case study'}</span>
           <h2 className="h-md next-title">{nx.title[0]} <span className="it">{nx.title[1]}</span> {nx.title[2]}</h2>
           <motion.div className="next-folder" whileHover={{ rotate: -1, y: -6 }}><Folder c={nx} compact={mobile} /></motion.div>
           <div className="next-links">
@@ -232,11 +232,11 @@ export default function CaseStudyPage() {
       </section>
 
       <nav className={`contents ${showBar ? 'show' : ''}`} aria-label="Chapters">
-        <span className="mono contents-l">CONTENTS</span>
+        <span className="mono contents-l">Contents</span>
         {chapters.map((ch, i) => (
           <button key={ch} className={active === i ? 'on' : ''} onClick={() => go(`ch-${i + 1}`)} title={ch}>
             {active === i && <motion.span layoutId="contents-pill" className="contents-pill" transition={{ type: 'spring', stiffness: 500, damping: 38 }} />}
-            <span className="mono contents-t">0{i + 1}</span>
+            <span className="mono contents-t">{i + 1}</span>
           </button>
         ))}
         <button className="contents-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>↑ Top</button>

@@ -7,11 +7,11 @@
 .folder-paper.pf { left: 44px; right: 72px; top: 78px; transform: rotate(-2deg); }
 .folder-front { position: absolute; left: 0; right: 0; bottom: 0; top: 180px; background: var(--c); border-radius: 20px; padding: 26px 28px 24px; display: flex; flex-direction: column; transition: transform .45s var(--ease-out); box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 -6px 16px rgba(0,0,0,.06); }
 .folder-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
-.folder-label { font-size: 12px; letter-spacing: .08em; white-space: pre; }
+.folder-label { font-size: 12px; letter-spacing: 0.01em; white-space: pre; }
 .folder-go { flex: none; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--fg); color: var(--c); transition: transform .45s var(--ease-out); }
-.folder-title { margin-top: 10px; font-family: var(--f-display); font-weight: 800; font-size: 34px; line-height: 1.04; letter-spacing: -0.025em; max-width: 92%; }
+.folder-title { margin-top: 10px; font-family: var(--f-display); font-weight: 800; font-size: 34px; line-height: 1.04; letter-spacing: -0.01em; max-width: 92%; }
 .folder-chips { margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { font-size: 14px; font-weight: 500; padding: 7px 14px; border-radius: 999px; border: 1.5px solid currentColor; white-space: nowrap; }
+.chip { font-size: 14px; font-weight: 500; padding: 7px 14px; border-radius: 6px; border: 1.5px solid currentColor; white-space: nowrap; }
 .chip-dark { background: var(--ink-0); color: var(--cream-0); border-color: var(--ink-0); }
 .chip-light { background: var(--cream-0); color: var(--ink-0); border-color: var(--cream-0); }
 

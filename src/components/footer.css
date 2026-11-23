@@ -1,14 +1,14 @@
 .footer { background: var(--ink-0); color: var(--cream-0); position: relative; overflow: hidden; }
 .gb { position: relative; width: 1512px; height: 600px; background-image: linear-gradient(rgba(243,238,228,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(243,238,228,.05) 1px, transparent 1px); background-size: 48px 48px; background-position: 32px 16px; }
 .gb-head { position: absolute; left: 64px; top: 56px; }
-.gb-title { margin: 0; font-family: var(--f-display); font-weight: 800; font-size: 54px; line-height: 1.02; letter-spacing: -0.035em; color: var(--cream-0); }
+.gb-title { margin: 0; font-family: var(--f-display); font-weight: 800; font-size: 54px; line-height: 1.02; letter-spacing: -0.01em; color: var(--cream-0); }
 .gb-title .it { font-size: 1.16em; }
-.gb-sub { margin: 18px 0 0; font-size: 12px; letter-spacing: .08em; color: rgba(243,238,228,.55); }
+.gb-sub { margin: 18px 0 0; font-size: 12px; letter-spacing: 0.01em; color: rgba(243,238,228,.55); }
 .gb-tools { position: absolute; left: 1264px; top: 70px; width: 184px; height: 40px; display: flex; align-items: center; gap: 10px; padding: 0 14px; border: 1px solid rgba(243,238,228,.18); border-radius: 999px; background: rgba(243,238,228,.05); }
 .gb-swatch { width: 18px; height: 18px; border-radius: 50%; outline: 2px solid transparent; outline-offset: 2px; transition: transform .2s var(--ease-bounce); }
 .gb-swatch.on { outline-color: var(--cream-0); transform: scale(1.1); }
 .gb-div { width: 1px; height: 18px; background: rgba(243,238,228,.25); }
-.gb-undo { font-size: 11px; letter-spacing: .08em; color: rgba(243,238,228,.7); }
+.gb-undo { font-size: 11px; letter-spacing: 0.01em; color: rgba(243,238,228,.7); }
 .gb-undo:disabled { opacity: .4; cursor: default; }
 .gb-wall { position: absolute; inset: 0; transform: scale(var(--z, 1)); transform-origin: 50% 60%; transition: transform .4s var(--ease-out); pointer-events: none; }
 .gb-wall > * { pointer-events: auto; }
@@ -30,7 +30,7 @@
 .sign-swoosh { position: absolute; left: 0; bottom: -10px; width: 200px; height: 14px; overflow: visible; }
 .sign-pen { position: absolute; right: 22px; bottom: 26px; display: flex; align-items: flex-end; gap: 2px; pointer-events: none; }
 .sign-you { font-size: 12px; font-weight: 600; background: var(--orange); color: var(--ink-0); padding: 2px 7px; border-radius: 5px; transform: translateY(14px); }
-.signed { position: absolute; right: -18px; top: -18px; padding: 6px 12px; border-radius: 999px; background: var(--lilac); color: var(--ink-0); font-family: var(--f-display); font-weight: 800; font-size: 16px; box-shadow: 0 6px 14px rgba(0,0,0,.3); }
+.signed { position: absolute; right: -18px; top: -18px; padding: 6px 12px; border-radius: 6px; background: var(--lilac); color: var(--ink-0); font-family: var(--f-display); font-weight: 800; font-size: 16px; box-shadow: 0 6px 14px rgba(0,0,0,.3); }
 .sign-box.m { height: 70px; padding: 0 56px 0 16px; margin-top: 22px; border-radius: 14px; }
 .sign-box.m .sign-line { height: 40px; }
 .sign-box.m .sign-input { font-size: 26px; }
@@ -50,7 +50,7 @@
 .sleepy.small .zz { left: 10px; bottom: 0; }
 
 .status { border-top: 1px solid rgba(243,238,228,.12); position: relative; }
-.status-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 85px; font-size: 12px; letter-spacing: .06em; color: rgba(243,238,228,.6); }
+.status-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 85px; font-size: 12px; letter-spacing: 0.01em; color: rgba(243,238,228,.6); }
 .status-left { display: flex; gap: 28px; }
 .status-dot::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--orange); margin-right: 8px; vertical-align: 1px; animation: pulse 2s ease-in-out infinite; }
 @keyframes pulse { 50% { opacity: .3; } }

@@ -11,12 +11,12 @@ type Sign = { label: string; sub: string; to: string; dir: 'r' | 'l'; bg: string
 export default function WhereToNext() {
   const mobile = useIsMobile();
   const all: Sign[] = [
-    { label: 'Work', sub: '04 FILES', to: '/#work', dir: 'r', bg: 'var(--orange)', fg: 'var(--ink-0)' },
-    { label: 'Playground', sub: '24 EXPERIMENTS', to: '/playground', dir: 'l', bg: 'var(--lilac)', fg: 'var(--ink-0)' },
-    { label: 'About', sub: 'THE LONG STORY', to: '/about', dir: 'r', bg: 'var(--card)', fg: 'var(--ink)' },
-    { label: 'Resume', sub: '1 PAGE, PROMISE', to: links.resume, dir: 'l', bg: 'var(--ink)', fg: 'var(--cream)', external: true },
-    { label: 'LinkedIn', sub: 'SAY HELLO ↗', to: links.linkedin, dir: 'r', bg: 'var(--sand)', fg: 'var(--ink)', external: true },
-    { label: 'Email me', sub: 'REPLIES FAST', to: links.email, dir: 'l', bg: 'var(--orange)', fg: 'var(--ink-0)', external: true },
+    { label: 'Work', sub: '4 files', to: '/#work', dir: 'r', bg: 'var(--orange)', fg: 'var(--ink-0)' },
+    { label: 'Playground', sub: '24 experiments', to: '/playground', dir: 'l', bg: 'var(--lilac)', fg: 'var(--ink-0)' },
+    { label: 'About', sub: 'The long story', to: '/about', dir: 'r', bg: 'var(--card)', fg: 'var(--ink)' },
+    { label: 'Resume', sub: '1 page, promise', to: links.resume, dir: 'l', bg: 'var(--ink)', fg: 'var(--cream)', external: true },
+    { label: 'LinkedIn', sub: 'Say hello ↗', to: links.linkedin, dir: 'r', bg: 'var(--sand)', fg: 'var(--ink)', external: true },
+    { label: 'Email me', sub: 'Replies fast', to: links.email, dir: 'l', bg: 'var(--orange)', fg: 'var(--ink-0)', external: true },
   ];
   const signs = mobile ? all.filter((x) => x.label !== 'LinkedIn').map((x) => (x.label === 'Email me' ? { ...x, dir: 'r' as const, bg: 'var(--sand)' } : x)) : all;
   const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -25,7 +25,7 @@ export default function WhereToNext() {
     <section className="section where">
       <div className="wrap">
         <Reveal className="where-head">
-          <span className="kicker">{'{ YOU MADE IT TO THE END }'}</span>
+          <span className="kicker">You made it to the end</span>
           <Title text="Where to next?" word="next" />
         </Reveal>
 
@@ -66,12 +66,12 @@ export default function WhereToNext() {
           </div>
           <div className="post-here mono" aria-hidden>
             <svg width="18" height="24" viewBox="0 0 18 24"><path d="M9 23s8-8.2 8-14A8 8 0 0 0 1 9c0 5.8 8 14 8 14z" fill="#ff5b2e" stroke="#16130f" strokeWidth="1.5" /><circle cx="9" cy="9" r="3" fill="#16130f" /></svg>
-            <span>YOU ARE HERE</span>
+            <span>You are here</span>
           </div>
         </div>
 
         <div className="chat">
-          <p className="chat-time mono">TODAY · {time}</p>
+          <p className="chat-time mono">Today · {time}</p>
           <motion.div className="chat-row" initial={{ opacity: 0, y: 20, scale: 0.96 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}>
             <span className="chat-av">FI</span>
             <div className="bubble bubble-orange">So… you scrolled all the way down.</div>
@@ -95,7 +95,7 @@ export default function WhereToNext() {
               </>
             )}
           </motion.div>
-          <p className="chat-seen mono">SEEN · USUALLY REPLIES WITHIN A DAY</p>
+          <p className="chat-seen mono">Seen · usually replies within a day</p>
         </div>
       </div>
     </section>

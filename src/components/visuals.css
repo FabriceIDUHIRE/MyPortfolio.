@@ -13,7 +13,7 @@
 .phone-body { padding: 10px 14px; display: flex; flex-direction: column; gap: 10px; height: calc(100% - 40px); }
 .phone-home { position: absolute; left: 50%; bottom: 7px; width: 80px; height: 4px; margin-left: -40px; border-radius: 3px; background: #121212; }
 .pv-step { margin: 0; font-size: 9px; color: #6b6b6b; text-align: right; }
-.pv-h { margin: 0; font-family: var(--f-display); font-weight: 800; font-size: 19px; letter-spacing: -0.02em; line-height: 1.1; display: flex; align-items: center; gap: 5px; }
+.pv-h { margin: 0; font-family: var(--f-display); font-weight: 800; font-size: 19px; letter-spacing: -0.01em; line-height: 1.1; display: flex; align-items: center; gap: 5px; }
 .pv-h.center { justify-content: center; }
 .pv-h.big { font-size: 24px; }
 .pv-sub { margin: 0; color: #6b6b6b; font-size: 10.5px; }
@@ -79,25 +79,25 @@
 .ds-in { flex: 1 1 180px; padding: 10px 14px; border-radius: 10px; border: 1.5px solid rgba(243,238,228,.35); font-size: 14px; opacity: .8; }
 .ds-tg { width: 44px; height: 26px; border-radius: 13px; background: var(--orange); position: relative; }
 .ds-tg i { position: absolute; right: 3px; top: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--cream-0); }
-.ds-chip { padding: 6px 12px; border-radius: 999px; background: rgba(243,238,228,.12); font-size: 13px; }
+.ds-chip { padding: 6px 12px; border-radius: 6px; background: rgba(243,238,228,.12); font-size: 13px; }
 .ds-chk { width: 24px; height: 24px; border-radius: 6px; background: var(--lilac); color: var(--ink-0); display: grid; place-items: center; font-size: 13px; }
 
 /* before / after */
 .bf-field { background: #fff; border: 1px solid #e8e6e1; border-radius: 9px; padding: 9px 10px; display: flex; flex-direction: column; gap: 3px; }
-.bf-field small { font-size: 8.5px; color: #6b6b6b; letter-spacing: .06em; }
+.bf-field small { font-size: 8.5px; color: #6b6b6b; letter-spacing: 0.01em; }
 .bf-field.err { border-color: #d93036; }
 .bf-field em { color: #d93036; font-style: normal; font-size: 9.5px; }
 .bf-call { height: 100%; background: #16130f; color: #fff; margin: -10px -14px; padding: 50px 14px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
-.bf-call b { font-size: 15px; } .bf-call .mono { font-size: 24px; } .bf-call small { font-size: 9px; letter-spacing: .1em; color: #ff5b2e; }
+.bf-call b { font-size: 15px; } .bf-call .mono { font-size: 24px; } .bf-call small { font-size: 9px; letter-spacing: 0.01em; color: #ff5b2e; }
 .bf-call p { margin: 0; opacity: .75; } .bf-call .hand { font-size: 18px; color: #c9b8ff; opacity: 1; }
 .bf-hang { margin-top: auto; margin-bottom: 30px; width: 46px; height: 46px; border-radius: 50%; background: #d93036; display: grid; place-items: center; font-size: 22px; }
 .bf-notebook { width: 280px; aspect-ratio: 3 / 4; background: #fffdf5 repeating-linear-gradient(transparent 0 30px, rgba(75,46,245,.18) 30px 31px); border-radius: 6px 14px 14px 6px; border-left: 12px solid #d4431d; padding: 18px 22px; font-size: 22px; line-height: 31px; transform: rotate(-3deg); box-shadow: 0 20px 40px rgba(22,19,15,.18); }
 .bf-notebook b { display: block; font-size: 26px; } .bf-notebook p { margin: 0; }
 .bf-ds { width: min(520px, 100%); background: var(--white); border-radius: 18px; padding: 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; }
-.bf-ds p { width: 100%; text-align: center; font-size: 10px; letter-spacing: .1em; color: var(--muted); margin: 0 0 6px; }
+.bf-ds p { width: 100%; text-align: center; font-size: 10px; letter-spacing: 0.01em; color: var(--muted); margin: 0 0 6px; }
 .bf-ds.after { background: var(--ink-0); }
 .bf-ds .v1 { background: #2f6fed; color: #fff; padding: 9px 16px; border-radius: 4px; }
-.bf-ds .v2 { background: #16a34a; color: #fff; padding: 12px 22px; border-radius: 999px; font-weight: 700; letter-spacing: .1em; font-size: 12px; }
+.bf-ds .v2 { background: #16a34a; color: #fff; padding: 12px 22px; border-radius: 999px; font-weight: 700; letter-spacing: 0.01em; font-size: 12px; }
 .bf-ds .v3 { border: 2px solid #9333ea; color: #9333ea; padding: 8px 14px; border-radius: 10px; }
 .bf-ds .v4 { background: #f59e0b; padding: 6px 12px; border-radius: 2px; font-family: Georgia, serif; }
 .bf-ds .v5 { background: #111; color: #fff; padding: 10px 20px; border-radius: 14px; box-shadow: 0 4px 0 #ef4444; }

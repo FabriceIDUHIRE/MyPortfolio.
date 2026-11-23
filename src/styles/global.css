@@ -1,6 +1,5 @@
 @import '@fontsource/bricolage-grotesque/700.css';
 @import '@fontsource/bricolage-grotesque/800.css';
-@import '@fontsource/instrument-serif/400-italic.css';
 @import '@fontsource/dm-sans/400.css';
 @import '@fontsource/dm-sans/500.css';
 @import '@fontsource/dm-sans/600.css';
@@ -22,7 +21,6 @@
   --white: #ffffff;
 
   --f-display: 'Bricolage Grotesque', system-ui, sans-serif;
-  --f-serif: 'Instrument Serif', Georgia, serif;
   --f-body: 'DM Sans', system-ui, sans-serif;
   --f-mono: 'Poppins', system-ui, sans-serif;
   --f-hand: 'Caveat', cursive;
@@ -77,17 +75,17 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .section { padding: 120px 0; position: relative; }
 @media (max-width: 900px) { .section { padding: 64px 0; } }
 
-.kicker { font-family: var(--f-mono); font-size: 14px; letter-spacing: 0.06em; color: var(--orange-deep); text-transform: uppercase; }
-.h-xl { font-family: var(--f-display); font-weight: 800; font-size: clamp(44px, 7.4vw, 112px); line-height: 0.95; letter-spacing: -0.035em; margin: 0; }
-.h-lg { font-family: var(--f-display); font-weight: 800; font-size: clamp(40px, 5.2vw, 80px); line-height: 0.98; letter-spacing: -0.035em; margin: 0; }
-.h-md { font-family: var(--f-display); font-weight: 700; font-size: clamp(26px, 3vw, 44px); line-height: 1.08; letter-spacing: -0.02em; margin: 0; }
-.it { font-family: var(--f-serif); font-style: italic; font-weight: 400; color: var(--orange); letter-spacing: -0.01em; font-size: 1.12em; }
+.kicker { font-family: var(--f-hand); font-weight: 700; font-size: 26px; line-height: 1; color: var(--orange-deep); display: inline-block; transform: rotate(-2deg); transform-origin: left center; }
+.h-xl { font-family: var(--f-display); font-weight: 800; font-size: clamp(44px, 7.4vw, 112px); line-height: 0.95; letter-spacing: -0.01em; margin: 0; }
+.h-lg { font-family: var(--f-display); font-weight: 800; font-size: clamp(40px, 5.2vw, 80px); line-height: 0.98; letter-spacing: -0.01em; margin: 0; }
+.h-md { font-family: var(--f-display); font-weight: 700; font-size: clamp(26px, 3vw, 44px); line-height: 1.08; letter-spacing: -0.01em; margin: 0; }
+.it { font: inherit; color: var(--orange); letter-spacing: inherit; padding-bottom: .08em; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8c18-6 34 3 52-1s38-6 64 0' fill='none' stroke='%23ff5b2e' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E") left bottom / 100% .2em no-repeat; }
 .lead { font-size: clamp(16px, 1.3vw, 19px); color: var(--muted); line-height: 1.55; margin: 0; }
 .hand { font-family: var(--f-hand); font-weight: 700; }
 .mono { font-family: var(--f-mono); }
 
 .sec-head { display: grid; grid-template-columns: 1fr minmax(0, 420px); gap: 32px; align-items: end; margin-bottom: 64px; }
-.sec-head .kicker { display: block; margin-bottom: 18px; }
+.sec-head .kicker { font-family: var(--f-hand); font-weight: 700; font-size: 26px; line-height: 1; color: var(--orange-deep); display: inline-block; transform: rotate(-2deg); transform-origin: left center; }
 @media (max-width: 900px) { .sec-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 36px; } }
 
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 24px; border-radius: 999px; font-weight: 600; font-size: 16px; transition: transform .25s var(--ease-bounce), background .2s, box-shadow .25s; white-space: nowrap; }

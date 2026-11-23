@@ -152,12 +152,12 @@ export function BeforeAfter({ slug, after }: { slug: string; after: boolean }) {
   // design system
   return after ? (
     <div className="bf-ds after">
-      <p className="mono">ONE LIBRARY · EVERY PRODUCT</p>
+      <p className="mono">One library, every product</p>
       {[0, 1, 2, 3, 4].map((i) => <span key={i} className="ds-b p">Submit</span>)}
     </div>
   ) : (
     <div className="bf-ds">
-      <p className="mono">“PRIMARY” BUTTON? ONE FROM EACH PRODUCT</p>
+      <p className="mono">“Primary” button? One from each product</p>
       <span className="v1">Submit</span><span className="v2">SUBMIT</span><span className="v3">Submit →</span><span className="v4">submit</span><span className="v5">Send it</span>
     </div>
   );

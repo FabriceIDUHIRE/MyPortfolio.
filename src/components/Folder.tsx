@@ -27,7 +27,7 @@ export default function Folder({ c, compact = false, open = false }: { c: CaseSt
       <span className="folder-paper pf"><MiniScreens slug={c.slug} /></span>
       <span className="folder-front">
         <span className="folder-top">
-          <span className="mono folder-label">0{c.index} — {c.label.replace(' · ', '  ·  ')}</span>
+          <span className="mono folder-label">Case {c.index}: {c.label}</span>
           <span className="folder-go" aria-hidden>
             <svg width="16" height="16" viewBox="0 0 16 16"><path d="M3.5 12.5l9-9M6 3.5h6.5V10" stroke="currentColor" strokeWidth="1.9" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </span>

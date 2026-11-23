@@ -33,7 +33,7 @@ export function SectionHead({ kicker, title, word, sub, children }: { kicker: st
   return (
     <div className="sec-head">
       <Reveal>
-        <span className="kicker">{`{ ${kicker} }`}</span>
+        <span className="kicker">{kicker}</span>
         <Title text={title} word={word} />
       </Reveal>
       <Reveal delay={0.1}>

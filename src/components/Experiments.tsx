@@ -190,18 +190,18 @@ function ConfettiCannon({ active }: { active: boolean }) {
 }
 
 export const experiments: Experiment[] = [
-  { name: 'Pocket budget', cat: 'Apps', tag: 'APP', Toy: PocketBudget },
-  { name: 'Split the bill', cat: 'Apps', tag: 'APP', Toy: SplitBill },
-  { name: 'Focus timer', cat: 'Apps', tag: 'APP', Toy: FocusTimer },
-  { name: 'Squishy toggle', cat: 'Motion', tag: 'MOTION', Toy: SquishyToggle },
-  { name: 'Loading blobs', cat: 'Motion', tag: 'MOTION', Toy: LoadingBlobs },
-  { name: 'Magnetic button', cat: 'Motion', tag: 'MOTION', Toy: MagneticButton },
-  { name: 'Type tester', cat: 'Tools', tag: 'TOOL', Toy: TypeTester },
-  { name: 'Contrast checker', cat: 'Tools', tag: 'TOOL', Toy: ContrastChecker },
-  { name: 'Color namer', cat: 'Tools', tag: 'TOOL', Toy: ColorNamer },
-  { name: 'Pixel me', cat: 'Fun', tag: 'FUN', Toy: PixelMe },
-  { name: 'Hum to search', cat: 'Fun', tag: 'FUN', Toy: HumToSearch },
-  { name: 'Confetti cannon', cat: 'Fun', tag: 'FUN', Toy: ConfettiCannon },
+  { name: 'Pocket budget', cat: 'Apps', tag: 'App', Toy: PocketBudget },
+  { name: 'Split the bill', cat: 'Apps', tag: 'App', Toy: SplitBill },
+  { name: 'Focus timer', cat: 'Apps', tag: 'App', Toy: FocusTimer },
+  { name: 'Squishy toggle', cat: 'Motion', tag: 'Motion', Toy: SquishyToggle },
+  { name: 'Loading blobs', cat: 'Motion', tag: 'Motion', Toy: LoadingBlobs },
+  { name: 'Magnetic button', cat: 'Motion', tag: 'Motion', Toy: MagneticButton },
+  { name: 'Type tester', cat: 'Tools', tag: 'Tool', Toy: TypeTester },
+  { name: 'Contrast checker', cat: 'Tools', tag: 'Tool', Toy: ContrastChecker },
+  { name: 'Color namer', cat: 'Tools', tag: 'Tool', Toy: ColorNamer },
+  { name: 'Pixel me', cat: 'Fun', tag: 'Fun', Toy: PixelMe },
+  { name: 'Hum to search', cat: 'Fun', tag: 'Fun', Toy: HumToSearch },
+  { name: 'Confetti cannon', cat: 'Fun', tag: 'Fun', Toy: ConfettiCannon },
 ];
 
 /** A frame-style card: hover (or tap on touch) to play. */
@@ -216,7 +216,7 @@ export function ExperimentCard({ exp, showFrameLabel = true, dim = false, polaro
       onPointerLeave={(e) => e.pointerType === 'mouse' && setActive(false)}
       onClick={() => setActive((a) => !a)}
     >
-      {showFrameLabel && <span className="xp-frame mono"># {exp.name}</span>}
+      {showFrameLabel && <span className="xp-frame mono">{exp.name}</span>}
       <div className="xp-card">
         <Toy active={active} />
         <div className="xp-meta">

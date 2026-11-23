@@ -28,11 +28,11 @@ function HeroButtons() {
 }
 const layers = [
   { icon: '◇', label: 'Product designer', hint: 'SINCE 2019' },
-  { icon: 'T', label: 'Sticky-note addict', hint: 'GUILTY' },
-  { icon: '○', label: 'Coffee, 2 cups a day', hint: 'NO SUGAR' },
+  { icon: 'T', label: 'Sticky-note addict', hint: 'Guilty' },
+  { icon: '○', label: 'Coffee, 2 cups a day', hint: 'No sugar' },
   { icon: '▶', label: 'Gamer after 6pm', hint: 'COD · NFS' },
-  { icon: '□', label: 'Long walks', hint: 'THINKING TIME' },
-  { icon: '✦', label: 'Motion nerd', hint: 'ALWAYS ON' },
+  { icon: '□', label: 'Long walks', hint: 'Thinking time' },
+  { icon: '✦', label: 'Motion nerd', hint: 'Always on' },
 ];
 function AboutHero() {
   const [hover, setHover] = useState<number | null>(null);
@@ -40,9 +40,9 @@ function AboutHero() {
     <section className="ab-hero grid-bg">
       <div className="wrap ab-hero-inner">
         <div className="ab-copy">
-          <motion.p className="mono ab-kicker" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>ABOUT · THE LONG STORY, SHORT</motion.p>
+          <motion.p className="mono ab-kicker" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>About · the long story, short</motion.p>
           <motion.h1 className="h-xl" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
-            A little about <br /><span className="it ab-me">me.</span>
+            A little about <br /><span className="it ab-me">me</span>
           </motion.h1>
           <motion.p className="lead ab-lead" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}>
             I’m Fabrice, a product designer who likes untangling messy problems and turning them into products people actually enjoy. I design in Figma, prototype everything, and I’m happiest when an idea goes from sticky note to shipped.
@@ -61,7 +61,7 @@ function AboutHero() {
 
         <motion.div className="layers" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.45, duration: 0.6 }}>
           <div className="layers-head"><b>Layers</b><span className="mono">me.work</span></div>
-          <div className="layer root"><span>#</span><b>Fabrice Iduhire</b><em className="mono">FRAME</em></div>
+          <div className="layer root"><span>#</span><b>Fabrice Iduhire</b><em className="mono">Frame</em></div>
           {layers.map((l, i) => (
             <motion.div
               key={l.label}
@@ -113,7 +113,7 @@ function AskMe() {
   return (
     <section className="section" id="ask">
       <div className="wrap">
-        <SectionHead kicker="ASK ME ANYTHING" title="Press ⌘K, ask me anything" word="anything" sub="The questions I actually get at meetups, coffee chats and 2am DMs. It browses on its own. Hover one to pick it." />
+        <SectionHead kicker="Ask me anything" title="Press ⌘K, ask me anything" word="anything" sub="The questions I actually get at meetups, coffee chats and 2am DMs. It browses on its own. Hover one to pick it." />
         <Reveal>
           <div
             className="palette"
@@ -133,7 +133,7 @@ function AskMe() {
             </div>
             <div className="pal-body">
               <div className="pal-list">
-                <p className="mono pal-label">QUESTIONS PEOPLE ACTUALLY ASK</p>
+                <p className="mono pal-label">Questions people actually ask</p>
                 {qa.map((x, k) => (
                   <button key={x.q} className={`pal-item ${k === i ? 'on' : ''}`} onMouseEnter={() => setI(k)} onFocus={() => setI(k)} onClick={() => { setI(k); setPaused(true); }}>
                     {k === i && <motion.span layoutId="pal-hi" className="pal-hi" transition={{ type: 'spring', stiffness: 500, damping: 38 }} />}
@@ -144,7 +144,7 @@ function AskMe() {
                 ))}
               </div>
               <div className="pal-answer" aria-live="polite">
-                <p className="mono pal-label orange">ANSWER · 0{i + 1} / 0{qa.length}</p>
+                <p className="mono pal-label orange">Answer {i + 1} of {qa.length}</p>
                 <AnimatePresence mode="wait">
                   <motion.div key={i} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.35 }}>
                     <p className="pal-a">{qa[i].a}</p>
@@ -154,8 +154,8 @@ function AskMe() {
               </div>
             </div>
             <div className="pal-foot mono">
-              <span>↑ ↓ TO BROWSE · HOVER TO PICK · 06 QUESTIONS</span>
-              <span>{paused ? 'PICKED' : 'BROWSING…'}</span>
+              <span>↑ ↓ to browse · hover to pick · 6 questions</span>
+              <span>{paused ? 'Picked' : 'Browsing…'}</span>
             </div>
           </div>
         </Reveal>
@@ -166,11 +166,11 @@ function AskMe() {
 
 /* ───────── snapshots ───────── */
 const stories = [
-  { tag: 'WHERE IT HAPPENS', t: 'Where it happens', d: 'My desk, a second monitor, and far too many open tabs.', note: 'the plant is fake.' },
+  { tag: 'Where it happens', t: 'Where it happens', d: 'My desk, a second monitor, and far too many open tabs.', note: 'the plant is fake.' },
   { tag: 'HOW MIGHT WE…', t: 'How might we…', d: 'A workshop wall after two hours of sticky notes and strong coffee.', note: 'we did find the answer' },
-  { tag: 'HI AGAIN', t: 'Hi again', d: 'That’s me. Usually a lot less serious than this photo.', note: 'promise.' },
-  { tag: 'SUNDAY WALK', t: 'Sunday walk', d: 'Where most of my “aha” moments quietly show up.', note: 'steps > screens' },
-  { tag: 'NOW PLAYING', t: 'Now playing', d: 'Unwinding with a controller after a long week of pixels.', note: 'ask me about my FC squad' },
+  { tag: 'Hi again', t: 'Hi again', d: 'That’s me. Usually a lot less serious than this photo.', note: 'promise.' },
+  { tag: 'Sunday walk', t: 'Sunday walk', d: 'Where most of my “aha” moments quietly show up.', note: 'steps > screens' },
+  { tag: 'Now playing', t: 'Now playing', d: 'Unwinding with a controller after a long week of pixels.', note: 'ask me about my FC squad' },
 ];
 const FILL = 2600;
 const depthRot = [0, 4, -3, 4, -3];
@@ -199,7 +199,7 @@ function Snapshots() {
   return (
     <section className="section">
       <div className="wrap">
-        <SectionHead kicker="SNAPSHOTS" title="Life outside the artboard" word="artboard" sub={mobile ? 'A few moments from my camera roll. They play like stories. Tap a photo to skip ahead.' : 'A few moments from my camera roll. They play like stories. Click a photo to skip ahead.'} />
+        <SectionHead kicker="Snapshots" title="Life outside the artboard" word="artboard" sub={mobile ? 'A few moments from my camera roll. They play like stories. Tap a photo to skip ahead.' : 'A few moments from my camera roll. They play like stories. Click a photo to skip ahead.'} />
         <Stage w={mobile ? 440 : 1384} h={mobile ? 700 : 660} max={mobile ? 1.3 : 1}>
           <div className="snap">
             {!mobile && <motion.span className="hand snap-seen" style={{ left: G.pile[0] + 40, top: G.pile[1] + (mobile ? 170 : 300) }} animate={{ opacity: i > 0 ? 1 : 0.3, rotate: 4 }}>seen it</motion.span>}
@@ -223,7 +223,7 @@ function Snapshots() {
                   tabIndex={k === cur ? 0 : -1}
                 >
                   <Photo src={`/images/snap-${k + 1}.jpg`} alt={st.d} className="snap-img" fallback={<span className="hand snap-fb">{st.t}</span>} />
-                  <span className="mono snap-chip">0{k + 1} · {st.tag}</span>
+                  <span className="mono snap-chip">{k + 1} · {st.tag}</span>
                 </motion.button>
               );
             })}
@@ -234,7 +234,7 @@ function Snapshots() {
             ))}
             <span className="hand snap-skip" style={mobile ? { left: 250, top: 452 } : { left: 690, top: 620 }}>{mobile ? 'tap to skip →' : 'click to skip →'}</span>
             <div className="snap-text" style={mobile ? { left: 20, top: 500, width: 400 } : { left: 960, top: 170, width: 424 }}>
-              <p className="mono kicker">STORY 0{cur + 1} / 0{stories.length}</p>
+              <p className="mono kicker">Story {cur + 1} of {stories.length}</p>
               <AnimatePresence mode="wait">
                 <motion.div key={cur} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.35 }}>
                   <h3 className="snap-title">{s.t}</h3>
@@ -266,7 +266,7 @@ function HowIWork() {
   return (
     <section className="section">
       <div className="wrap">
-        <SectionHead kicker="HOW I WORK" title="From sticky note to shipped" word="shipped" sub="Four steps, in this order most days. Watch the flow play through." />
+        <SectionHead kicker="How I work" title="From sticky note to shipped" word="shipped" sub="Four steps, in this order most days. Watch the flow play through." />
         <div className="flow">
           {steps.map((s, k) => (
             <div key={s.t} className={`flow-step ${k === i ? 'on' : ''} ${k < i ? 'done' : ''}`}>
@@ -275,9 +275,9 @@ function HowIWork() {
                 {k === 0 && <><i /><i /><i /></>}
                 {k === 1 && <><i /><i /><i /></>}
                 {k === 2 && <span className="fa-phone"><i /></span>}
-                {k === 3 && <><span className="mono fa-live">LIVE</span><svg width="44" height="34" viewBox="0 0 44 34"><path d="M4 18l12 12L40 4" stroke="#ff5b2e" strokeWidth="5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg></>}
+                {k === 3 && <><span className="mono fa-live">Live</span><svg width="44" height="34" viewBox="0 0 44 34"><path d="M4 18l12 12L40 4" stroke="#ff5b2e" strokeWidth="5" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg></>}
               </div>
-              <p className="mono flow-n">STEP 0{k + 1}</p>
+              <p className="mono flow-n">Step {k + 1}</p>
               <h3>{s.t}</h3>
               <p className="flow-d">{s.d}</p>
               {k < steps.length - 1 && <span className="flow-arrow" aria-hidden />}
@@ -290,12 +290,12 @@ function HowIWork() {
 }
 
 /* ───────── toolbox ───────── */
-const tools: { n: string; cat: 'DESIGN' | 'BUILD' | 'TALK'; m: [number, number, number] }[] = [
-  { n: 'Figma', cat: 'DESIGN', m: [5, 10, -8] }, { n: 'Framer', cat: 'DESIGN', m: [26, 6, 6] }, { n: 'Rive', cat: 'DESIGN', m: [44, 22, 7] }, { n: 'LottieFiles', cat: 'DESIGN', m: [62, 4, -5] }, { n: 'Maze', cat: 'DESIGN', m: [82, 20, 9] },
-  { n: 'ProtoPie', cat: 'BUILD', m: [12, 40, -6] }, { n: 'Claude', cat: 'BUILD', m: [32, 48, 5] }, { n: 'Spline', cat: 'BUILD', m: [53, 42, -7] }, { n: 'Jitter', cat: 'BUILD', m: [70, 54, 8] },
-  { n: 'Notion', cat: 'TALK', m: [6, 74, 4] }, { n: 'Slack', cat: 'TALK', m: [36, 82, 8] }, { n: 'Miro', cat: 'TALK', m: [58, 76, -6] },
+const tools: { n: string; cat: 'Design' | 'Build' | 'Talk'; m: [number, number, number] }[] = [
+  { n: 'Figma', cat: 'Design', m: [5, 10, -8] }, { n: 'Framer', cat: 'Design', m: [26, 6, 6] }, { n: 'Rive', cat: 'Design', m: [44, 22, 7] }, { n: 'LottieFiles', cat: 'Design', m: [62, 4, -5] }, { n: 'Maze', cat: 'Design', m: [82, 20, 9] },
+  { n: 'ProtoPie', cat: 'Build', m: [12, 40, -6] }, { n: 'Claude', cat: 'Build', m: [32, 48, 5] }, { n: 'Spline', cat: 'Build', m: [53, 42, -7] }, { n: 'Jitter', cat: 'Build', m: [70, 54, 8] },
+  { n: 'Notion', cat: 'Talk', m: [6, 74, 4] }, { n: 'Slack', cat: 'Talk', m: [36, 82, 8] }, { n: 'Miro', cat: 'Talk', m: [58, 76, -6] },
 ];
-const catColor = { DESIGN: 'var(--orange)', BUILD: 'var(--lilac)', TALK: 'var(--white)' };
+const catColor = { Design: 'var(--orange)', Build: 'var(--lilac)', Talk: 'var(--white)' };
 function Toolbox() {
   const mobile = useIsMobile();
   const [sorted, setSorted] = useState(false);
@@ -314,7 +314,7 @@ function Toolbox() {
   return (
     <section className="section">
       <div className="wrap">
-        <SectionHead kicker="WHAT’S IN THE TOOLBOX" title="Thrown in the toolbox" word="toolbox" sub={mobile ? 'Tossed in a pile, as usual. Tap the box to tidy it up.' : 'Tossed in a pile, as usual. Hover the box and watch them tidy themselves up.'} />
+        <SectionHead kicker="What’s in the toolbox" title="Thrown in the toolbox" word="toolbox" sub={mobile ? 'Tossed in a pile, as usual. Tap the box to tidy it up.' : 'Tossed in a pile, as usual. Hover the box and watch them tidy themselves up.'} />
         <LayoutGroup>
           <div
             className={`toolbox ${sorted ? 'is-sorted' : ''}`}
@@ -326,7 +326,7 @@ function Toolbox() {
           >
             {sorted ? (
               <div className="tb-sorted">
-                {(['DESIGN', 'BUILD', 'TALK'] as const).map((c) => (
+                {(['Design', 'Build', 'Talk'] as const).map((c) => (
                   <div key={c} className="tb-row">
                     <motion.span className="mono tb-cat" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>{c}</motion.span>
                     <div className="tb-chips">{tools.filter((t) => t.cat === c).map((t) => chip(t, false))}</div>

@@ -14,8 +14,8 @@ import './home.css';
 const ext = (h: string) => (isExternal(h) ? { target: '_blank', rel: 'noreferrer' } : {});
 
 /* ═══════════════ HERO ═══════════════ */
-const words = ['Loved', 'Useful', 'Shipped'] as const;
-const sizes = { Loved: 1031, Useful: 1049, Shipped: 1151 };
+const words = ['loved', 'useful', 'shipped'] as const;
+const sizes = { loved: 1031, useful: 1049, shipped: 1151 };
 function useWord() {
   const [w, setW] = useState(0);
   useEffect(() => {
@@ -160,8 +160,8 @@ function HeroDesktop() {
           <span className="sel-name mono">Headline</span>
           <i className="hd tl" /><i className="hd tr" /><i className="hd bl" /><i className="hd br" />
           <h1 className="hl-h1">
-            <span className="hl-l1">Messy ideas in.</span>
-            <span className="hl-l2"><SwapWord word={word} /> <motion.span layout transition={{ layout: bouncy }} className="hl-rest">products out.</motion.span></span>
+            <span className="hl-l1">Messy ideas in,</span>
+            <span className="hl-l2"><SwapWord word={word} /> <motion.span layout transition={{ layout: bouncy }} className="hl-rest">products out</motion.span></span>
           </h1>
           <motion.span layout="position" className="sel-size mono" transition={{ layout: bouncy }}>{sizes[word]} × Hug</motion.span>
         </motion.div>
@@ -171,7 +171,7 @@ function HeroDesktop() {
       <div className="pos" style={{ left: 1116, top: 438 }}><Comment /></div>
       <div className="pos" style={{ left: 64, top: 538 }}><Cta /></div>
       <div className="pos" style={{ left: 955, top: 673 }}><Stats /></div>
-      <a href="#work" className="pos keep mono" style={{ left: 1210, top: 635 }}>04 FILES  ·  KEEP SCROLLING <span>↓</span></a>
+      <a href="#work" className="pos keep mono" style={{ left: 1210, top: 635 }}>4 files  ·  keep scrolling <span>↓</span></a>
     </Stage>
   );
 }
@@ -186,9 +186,9 @@ function HeroMobile() {
           <span className="sel-name mono">Headline</span>
           <i className="hd tl" /><i className="hd tr" /><i className="hd bl" /><i className="hd br" />
           <h1 className="hl-h1 m">
-            <span className="hl-l1">Messy ideas in.</span>
+            <span className="hl-l1">Messy ideas in,</span>
             <span className="hl-l2"><SwapWord word={word} /> <motion.span layout transition={{ layout: bouncy }} className="hl-rest">products</motion.span></span>
-            <span className="hl-l1">out.</span>
+            <span className="hl-l1">out</span>
           </h1>
         </div>
       </div>
@@ -216,7 +216,7 @@ function SelectedWork() {
       <div className="wrap">
         <div className="sw-head">
           <Reveal>
-            <h2 className="h-lg">Selected <span className="it">work</span><sup className="mono sw-count">(04 FILES)</sup></h2>
+            <h2 className="h-lg">Selected <span className="it">work</span><sup className="mono sw-count">(4 files)</sup></h2>
           </Reveal>
           <Reveal delay={0.1}><p className="lead">A few projects I’m proud of — with the numbers to back them up.</p></Reveal>
         </div>
@@ -228,7 +228,7 @@ function SelectedWork() {
         ) : (
           <Stage w={1384} h={1110}>
             <div className="pile" onMouseEnter={() => setSpread(true)} onMouseLeave={() => setSpread(false)}>
-              <motion.p className="mono pile-label" animate={{ opacity: spread ? 0 : 1 }}>04 FILES  ·  NEATLY PILED</motion.p>
+              <motion.p className="mono pile-label" animate={{ opacity: spread ? 0 : 1 }}>4 files  ·  neatly piled</motion.p>
               {[...cases].reverse().map((c) => {
                 const i = c.index - 1;
                 const p = spread ? spreadAt[i] : pileAt[i];
@@ -256,7 +256,7 @@ function WorkCard({ n, t, d, art: Art }: { n: string; t: string; d: string; art:
   const [h, setH] = useState(false);
   return (
     <div className={`wo ${h ? 'on' : ''}`} onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)} onClick={() => setH((x) => !x)}>
-      <span className="mono wo-n"># {n}  {t}</span>
+      <span className="mono wo-n">{Number(n)} of 4</span>
       <div className="wo-card">
         <div className="wo-art"><Art h={h} /></div>
         <h3>{t}</h3>
@@ -299,7 +299,7 @@ const ArtSystem = ({ h }: { h: boolean }) => {
 };
 const ArtMotion = ({ h }: { h: boolean }) => (
   <div className="art a-motion">
-    <span className="mono am-l">FIGMA</span><span className="mono am-r">MOTION</span>
+    <span className="mono am-l">Figma</span><span className="mono am-r">Motion</span>
     <span className={`am-btn ${h ? 'on' : ''}`}>Button</span>
     <pre className="mono am-code">{h ? 'on tap:\n  squish 0.92\n  wiggle!' : 'on tap:\n  squish 0.96\n  bounce back'}</pre>
     <motion.span className="hand am-feel" animate={{ opacity: h ? 1 : 0, y: h ? 0 : 6 }}>feels right</motion.span>
@@ -321,7 +321,7 @@ function WorkOn() {
   return (
     <section className="section">
       <div className="wrap">
-        <SectionHead kicker="WHAT I WORK ON" title="Problems I love getting pulled into" word="love" sub="Four kinds of problems I get pulled into — and the ones I go looking for." />
+        <SectionHead kicker="What I work on" title="Problems I love getting pulled into" word="love" sub="Four kinds of problems I get pulled into — and the ones I go looking for." />
       </div>
       <div className="wrap h-scroller">
         <div className="wo-row">{items.map((it, i) => <Reveal key={it.n} delay={i * 0.08}><WorkCard {...it} /></Reveal>)}</div>
@@ -338,7 +338,7 @@ function Brick({ b }: { b: (typeof bricks)[number] }) {
   return (
     <div className={`brick brick-${b.color}`}>
       <span className="mono brick-y">{b.years}</span>
-      {b.now && <span className="mono brick-now">NOW</span>}
+      {b.now && <span className="mono brick-now">Now</span>}
       <b className="brick-co">{b.company}</b>
       <span className="brick-role">{b.role}</span>
     </div>
@@ -380,7 +380,7 @@ function BrickWall() {
             );
           })}
           <motion.div className="ghost" animate={{ opacity: phase === 5 ? 1 : 0, y: phase === 5 ? 0 : -180 }} transition={{ duration: 0.5 }}>
-            <a href={links.email} className="ghost-in"><span className="mono">NEXT BRICK</span><b>Your company?</b><em>Let’s talk  →</em></a>
+            <a href={links.email} className="ghost-in"><span className="mono">Next brick</span><b>Your company?</b><em>Let’s talk  →</em></a>
           </motion.div>
           <motion.div className="dropzone" animate={{ opacity: phase === 5 ? 1 : 0 }} />
           <motion.div className="wall-still" animate={{ opacity: phase === 5 ? 1 : 0 }}>
@@ -392,7 +392,7 @@ function BrickWall() {
             <span className="cursor-lilac-tag">you, placing it?</span>
           </motion.div>
           <div className="ground" />
-          <p className="mono foundation">THE FOUNDATION — WHERE IT ALL STARTED</p>
+          <p className="mono foundation">The foundation — where it all started</p>
         </div>
       </Stage>
     </div>
@@ -403,14 +403,14 @@ function BrickMobile() {
   const list = [...bricks].reverse();
   return (
     <div className="wall-m">
-      <a href={links.email} className="ghost-in m"><span className="mono">NEXT BRICK</span><b>Your company?</b></a>
+      <a href={links.email} className="ghost-in m"><span className="mono">Next brick</span><b>Your company?</b></a>
       {list.map((b, i) => (
         <motion.div key={b.company} style={{ marginLeft: `${offs[i]}%`, width: `${[85, 92, 80, 75, 70][i]}%` }} initial={{ y: -80, opacity: 0, rotate: i % 2 ? 5 : -5 }} whileInView={{ y: 0, opacity: 1, rotate: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 240, damping: 15, delay: (list.length - i) * 0.12 }}>
           <Brick b={b} />
         </motion.div>
       ))}
       <div className="ground m" />
-      <p className="mono foundation m">THE FOUNDATION</p>
+      <p className="mono foundation m">The foundation</p>
     </div>
   );
 }
@@ -419,7 +419,7 @@ export function Bricks() {
   return (
     <section className="section">
       <div className="wrap">
-        <SectionHead kicker="WHERE I’VE BEEN" title="Built brick by brick" word="brick" sub={mobile ? 'Every role is a brick in how I work today. The wall is still going up.' : 'Every role is a brick in how I work today. The wall is still going up — maybe your team is the next brick.'}>
+        <SectionHead kicker="Where I’ve been" title="Built brick by brick" word="brick" sub={mobile ? 'Every role is a brick in how I work today. The wall is still going up.' : 'Every role is a brick in how I work today. The wall is still going up — maybe your team is the next brick.'}>
           {!mobile && (
             <div className="brick-links">
               <a href={links.resume} {...ext(links.resume)}>Download resume  ↓</a>
@@ -449,7 +449,7 @@ function Quotes() {
     <section className="section wom" ref={ref}>
       <div className="wrap">
         <Reveal className="wom-head">
-          <span className="kicker">{'{ WORD OF MOUTH }'}</span>
+          <span className="kicker">Word of mouth</span>
           <Title text="In their words" word="words" />
         </Reveal>
         <div className="wom-quote">
@@ -470,7 +470,7 @@ function Quotes() {
               </motion.div>
             </AnimatePresence>
           </div>
-          <p className="mono wom-n">0{i + 1}  /  0{quotes.length}</p>
+          <p className="mono wom-n">{i + 1} of {quotes.length}</p>
           <p className="hand wom-hint">click a face to switch</p>
         </div>
       </div>

@@ -14,7 +14,7 @@ const spots = [[660, 200], [930, 330], [300, 410], [700, 540], [1250, 470], [960
 function useClock() {
   const [t, setT] = useState(() => new Date());
   useEffect(() => { const id = setInterval(() => setT(new Date()), 30_000); return () => clearInterval(id); }, []);
-  return t.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }).toUpperCase();
+  return t.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }
 function useMine() {
   const [mine, setMine] = useState<Mine[]>(() => { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch { return []; } });
@@ -78,7 +78,7 @@ function SignBox({ color, onSign, mobile = false }: { color: string; onSign: (t:
       </motion.span>
       <AnimatePresence>
         {((demo && phase === 2 && !mobile) || done) && (
-          <motion.span className="signed" initial={{ scale: 0, rotate: -30 }} animate={{ scale: 1, rotate: 8 }} exit={{ scale: 0, opacity: 0 }} transition={{ type: 'spring', stiffness: 400, damping: 12 }}>SIGNED!</motion.span>
+          <motion.span className="signed" initial={{ scale: 0, rotate: -30 }} animate={{ scale: 1, rotate: 8 }} exit={{ scale: 0, opacity: 0 }} transition={{ type: 'spring', stiffness: 400, damping: 12 }}>Signed!</motion.span>
         )}
       </AnimatePresence>
     </div>
@@ -115,8 +115,8 @@ export default function Footer() {
     return (
       <footer className="footer m">
         <div className="wrap">
-          <h2 className="gb-title">Leave your <span className="it">mark</span><br />before you go.</h2>
-          <p className="mono gb-sub">{count} VISITORS HAVE SIGNED</p>
+          <h2 className="gb-title">Leave your <span className="it">mark</span><br />before you go</h2>
+          <p className="mono gb-sub">{count} visitors have signed</p>
           <div className="gb-wall-m">
             {signatures.slice(0, 6).map((s, i) => (
               <span key={s.t} className="hand" style={{ color: s.c, transform: `rotate(${s.r}deg)`, fontSize: [22, 18, 18, 26, 18, 20][i] }}>{s.t.split('\n')[0]}</span>
@@ -128,7 +128,7 @@ export default function Footer() {
         </div>
         <div className="status">
           <div className="wrap status-inner mono">
-            <span>© {new Date().getFullYear()} {site.name.toUpperCase()}</span>
+            <span>© {new Date().getFullYear()} {site.name}</span>
             <button className="btn status-top" onClick={top}>Top ↑</button>
           </div>
         </div>
@@ -141,14 +141,14 @@ export default function Footer() {
       <Stage w={1512} h={600}>
         <div className="gb" style={{ ['--z' as string]: zoom / 100 }}>
           <div className="gb-head">
-            <h2 className="gb-title">Leave your <span className="it">mark</span><br />before you go.</h2>
-            <p className="mono gb-sub">{count} VISITORS HAVE SIGNED  ·  YOU’RE NEXT</p>
+            <h2 className="gb-title">Leave your <span className="it">mark</span><br />before you go</h2>
+            <p className="mono gb-sub">{count} visitors have signed · you’re next</p>
           </div>
           <div className="gb-tools" role="toolbar" aria-label="Pen colour">
             <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden><path d="M2 14l1-4 8-8 3 3-8 8-4 1z" stroke="#f3eee4" strokeWidth="1.4" fill="none" strokeLinejoin="round" /></svg>
             {COLORS.map((c) => <button key={c} className={`gb-swatch ${c === color ? 'on' : ''}`} style={{ background: c }} onClick={() => setColor(c)} aria-label={`Pen colour ${c}`} />)}
             <i className="gb-div" />
-            <button className="gb-undo mono" onClick={() => setMine((m) => m.slice(0, -1))} disabled={!mine.length}>UNDO</button>
+            <button className="gb-undo mono" onClick={() => setMine((m) => m.slice(0, -1))} disabled={!mine.length}>Undo</button>
           </div>
           <div className="gb-wall">
             {signatures.map((s) => (
@@ -177,8 +177,8 @@ export default function Footer() {
         <div className="wrap status-inner mono">
           <div className="status-left">
             <span>© {new Date().getFullYear()} {site.name}</span>
-            <span className="status-dot">LAST EDITED JUST NOW</span>
-            <span>YOUR CITY · {time}</span>
+            <span className="status-dot">Last edited just now</span>
+            <span>Your city · {time}</span>
           </div>
           <div className="status-right">
             <span className="zoom">

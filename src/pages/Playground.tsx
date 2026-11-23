@@ -45,9 +45,9 @@ export default function Playground() {
       <section className="pg-hero grid-bg">
         <div className="wrap pg-hero-inner">
           <div>
-            <motion.p className="mono pg-kicker" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>PLAYGROUND · SIDE QUESTS &amp; 2AM IDEAS</motion.p>
+            <motion.p className="mono pg-kicker" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>Playground · side quests &amp; 2am ideas</motion.p>
             <motion.h1 className="h-xl" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
-              Built just to see<br />if it <span className="it">works</span>.
+              Built just to see<br />if it <span className="it">works</span>
             </motion.h1>
             <motion.p className="lead pg-lead" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}>
               Design experiments, tiny tools and things I made because I wanted to know if they’d work. Some are useful. Most are just fun. All of them taught me something.
@@ -62,7 +62,7 @@ export default function Playground() {
 
       <section className="section">
         <div className="wrap">
-          <SectionHead kicker="EXPERIMENTS" title="Twelve tiny side quests" word="side quests" sub="Organised like a Figma file, because of course. Pick a page to filter. Hover (or tap) any frame to play with it." />
+          <SectionHead kicker="Experiments" title="Twelve tiny side quests" word="side quests" sub="Organised like a Figma file, because of course. Pick a page to filter. Hover (or tap) any frame to play with it." />
           <div className="ws">
             <aside className="ws-side">
               <div className="ws-pages">
@@ -71,7 +71,7 @@ export default function Playground() {
                   <button key={c} className={`ws-page ${f === c ? 'on' : ''}`} onClick={() => setF(c)} aria-pressed={f === c}>
                     {f === c && <motion.span layoutId="ws-hi" className="ws-hi" transition={{ type: 'spring', stiffness: 500, damping: 38 }} />}
                     <span className="ws-page-t">· {c === 'All' ? 'All experiments' : c}</span>
-                    <span className="mono ws-page-n">{String(count(c)).padStart(2, '0')}</span>
+                    <span className="mono ws-page-n">{count(c)}</span>
                   </button>
                 ))}
                 <p className="hand ws-hint">pick a page to<br />filter the frames →</p>
@@ -80,8 +80,8 @@ export default function Playground() {
             </aside>
             <div className="ws-main">
               <div className="ws-bar mono">
-                <span>{f === 'All' ? '12 OF 12 FRAMES · ALL' : `${String(count(f)).padStart(2, '0')} OF 12 FRAMES · ${f.toUpperCase()}`}</span>
-                <span className="ws-bar-r">HOVER TO PLAY</span>
+                <span>{f === 'All' ? '12 of 12 frames · all' : `${count(f)} of 12 frames · ${f.toLowerCase()}`}</span>
+                <span className="ws-bar-r">Hover to play</span>
               </div>
               <div className="ws-grid">
                 {ordered.map((e) => (
